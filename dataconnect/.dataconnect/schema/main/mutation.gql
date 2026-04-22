@@ -1,0 +1,562 @@
+extend type Mutation {
+  """
+  ✨ Insert a single `HealthGoal` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  healthGoal_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: HealthGoal_Data!
+  ): HealthGoal_KeyOutput! @fdc_generated(from: "HealthGoal", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `HealthMetricRecord` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  healthMetricRecord_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: HealthMetricRecord_Data!
+  ): HealthMetricRecord_KeyOutput! @fdc_generated(from: "HealthMetricRecord", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `HealthMetricType` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  healthMetricType_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: HealthMetricType_Data!
+  ): HealthMetricType_KeyOutput! @fdc_generated(from: "HealthMetricType", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `ProviderAccess` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  providerAccess_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: ProviderAccess_Data!
+  ): ProviderAccess_KeyOutput! @fdc_generated(from: "ProviderAccess", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `User` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  user_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: User_Data!
+  ): User_KeyOutput! @fdc_generated(from: "User", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert `HealthGoal` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  healthGoal_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [HealthGoal_Data!]!
+  ): [HealthGoal_KeyOutput!]! @fdc_generated(from: "HealthGoal", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `HealthMetricRecord` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  healthMetricRecord_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [HealthMetricRecord_Data!]!
+  ): [HealthMetricRecord_KeyOutput!]! @fdc_generated(from: "HealthMetricRecord", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `HealthMetricType` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  healthMetricType_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [HealthMetricType_Data!]!
+  ): [HealthMetricType_KeyOutput!]! @fdc_generated(from: "HealthMetricType", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `ProviderAccess` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  providerAccess_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [ProviderAccess_Data!]!
+  ): [ProviderAccess_KeyOutput!]! @fdc_generated(from: "ProviderAccess", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `User` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  user_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [User_Data!]!
+  ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert or update a single `HealthGoal` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `HealthGoal`.
+  """
+  healthGoal_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: HealthGoal_Data!
+  ): HealthGoal_KeyOutput! @fdc_generated(from: "HealthGoal", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `HealthMetricRecord` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `HealthMetricRecord`.
+  """
+  healthMetricRecord_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: HealthMetricRecord_Data!
+  ): HealthMetricRecord_KeyOutput! @fdc_generated(from: "HealthMetricRecord", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `HealthMetricType` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `HealthMetricType`.
+  """
+  healthMetricType_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: HealthMetricType_Data!
+  ): HealthMetricType_KeyOutput! @fdc_generated(from: "HealthMetricType", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `ProviderAccess` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `ProviderAccess`.
+  """
+  providerAccess_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: ProviderAccess_Data!
+  ): ProviderAccess_KeyOutput! @fdc_generated(from: "ProviderAccess", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `User` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `User`.
+  """
+  user_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: User_Data!
+  ): User_KeyOutput! @fdc_generated(from: "User", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update `HealthGoal` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `HealthGoal`.
+  """
+  healthGoal_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [HealthGoal_Data!]!
+  ): [HealthGoal_KeyOutput!]! @fdc_generated(from: "HealthGoal", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `HealthMetricRecord` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `HealthMetricRecord`.
+  """
+  healthMetricRecord_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [HealthMetricRecord_Data!]!
+  ): [HealthMetricRecord_KeyOutput!]! @fdc_generated(from: "HealthMetricRecord", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `HealthMetricType` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `HealthMetricType`.
+  """
+  healthMetricType_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [HealthMetricType_Data!]!
+  ): [HealthMetricType_KeyOutput!]! @fdc_generated(from: "HealthMetricType", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `ProviderAccess` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `ProviderAccess`.
+  """
+  providerAccess_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [ProviderAccess_Data!]!
+  ): [ProviderAccess_KeyOutput!]! @fdc_generated(from: "ProviderAccess", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `User` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `User`.
+  """
+  user_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [User_Data!]!
+  ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Update a single `HealthGoal` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `HealthGoal` or `null` if not found.
+  """
+  healthGoal_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: HealthGoal_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: HealthGoal_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: HealthGoal_Data!
+  ): HealthGoal_KeyOutput @fdc_generated(from: "HealthGoal", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `HealthMetricRecord` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `HealthMetricRecord` or `null` if not found.
+  """
+  healthMetricRecord_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: HealthMetricRecord_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: HealthMetricRecord_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: HealthMetricRecord_Data!
+  ): HealthMetricRecord_KeyOutput @fdc_generated(from: "HealthMetricRecord", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `HealthMetricType` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `HealthMetricType` or `null` if not found.
+  """
+  healthMetricType_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: HealthMetricType_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: HealthMetricType_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: HealthMetricType_Data!
+  ): HealthMetricType_KeyOutput @fdc_generated(from: "HealthMetricType", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `ProviderAccess` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `ProviderAccess` or `null` if not found.
+  """
+  providerAccess_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: ProviderAccess_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: ProviderAccess_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: ProviderAccess_Data!
+  ): ProviderAccess_KeyOutput @fdc_generated(from: "ProviderAccess", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `User` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `User` or `null` if not found.
+  """
+  user_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: User_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: User_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: User_Data!
+  ): User_KeyOutput @fdc_generated(from: "User", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update `HealthGoal` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  healthGoal_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: HealthGoal_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: HealthGoal_Data!
+  ): Int! @fdc_generated(from: "HealthGoal", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `HealthMetricRecord` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  healthMetricRecord_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: HealthMetricRecord_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: HealthMetricRecord_Data!
+  ): Int! @fdc_generated(from: "HealthMetricRecord", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `HealthMetricType` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  healthMetricType_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: HealthMetricType_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: HealthMetricType_Data!
+  ): Int! @fdc_generated(from: "HealthMetricType", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `ProviderAccess` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  providerAccess_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: ProviderAccess_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: ProviderAccess_Data!
+  ): Int! @fdc_generated(from: "ProviderAccess", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `User` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  user_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: User_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: User_Data!
+  ): Int! @fdc_generated(from: "User", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Delete a single `HealthGoal` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  healthGoal_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: HealthGoal_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: HealthGoal_FirstRow
+  ): HealthGoal_KeyOutput @fdc_generated(from: "HealthGoal", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `HealthMetricRecord` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  healthMetricRecord_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: HealthMetricRecord_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: HealthMetricRecord_FirstRow
+  ): HealthMetricRecord_KeyOutput @fdc_generated(from: "HealthMetricRecord", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `HealthMetricType` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  healthMetricType_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: HealthMetricType_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: HealthMetricType_FirstRow
+  ): HealthMetricType_KeyOutput @fdc_generated(from: "HealthMetricType", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `ProviderAccess` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  providerAccess_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: ProviderAccess_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: ProviderAccess_FirstRow
+  ): ProviderAccess_KeyOutput @fdc_generated(from: "ProviderAccess", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `User` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  user_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: User_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: User_FirstRow
+  ): User_KeyOutput @fdc_generated(from: "User", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete `HealthGoal` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  healthGoal_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: HealthGoal_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "HealthGoal", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `HealthMetricRecord` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  healthMetricRecord_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: HealthMetricRecord_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "HealthMetricRecord", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `HealthMetricType` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  healthMetricType_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: HealthMetricType_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "HealthMetricType", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `ProviderAccess` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  providerAccess_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: ProviderAccess_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "ProviderAccess", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `User` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  user_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: User_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "User", purpose: DELETE_MULTIPLE)
+}

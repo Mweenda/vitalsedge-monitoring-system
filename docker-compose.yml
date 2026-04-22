@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  # Frontend application
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - firebase-emulator
+    environment:
+      VITE_API_KEY: ${VITE_API_KEY}
+      VITE_AUTH_DOMAIN: ${VITE_AUTH_DOMAIN}
+      VITE_PROJECT_ID: ${VITE_PROJECT_ID}
+      VITE_STORAGE_BUCKET: ${VITE_STORAGE_BUCKET}
+    networks:
+      - vitals-network
+    restart: unless-stopped
+
+  # Firebase Emulator Suite
+  firebase-emulator:
+    image: node:22-alpine
+    working_dir: /firebase
+    volumes:
+      - ./:/firebase
+    ports:
+      - "4000:4000"  # Emulator UI
+      - "9099:9099"  # Auth
+      - "8080:8080"  # Firestore
+      - "9199:9199"  # Storage
+    environment:
+      FIREBASE_EMULATOR_HUB: firebase-emulator:4400
+    command: >
+      sh -c "npm install -g firebase-tools &&
+             firebase emulators:start --project=vitalsedge-monitoring-system --config=firebase-minimal.json"
+    networks:
+      - vitals-network
+    restart: unless-stopped
+
+networks:
+  vitals-network:
+    driver: bridge
+
+volumes:
+  firebase-data:
+    driver: local

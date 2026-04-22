@@ -1,0 +1,45 @@
+type User @table {
+  displayName: String!
+  createdAt: Timestamp!
+  dateOfBirth: Date!
+  gender: String!
+  email: String
+  photoUrl: String
+  height: Float
+  weight: Float
+}
+
+type HealthMetricType @table {
+  name: String!
+  unit: String!
+  description: String
+}
+
+type HealthMetricRecord @table {
+  user: User!
+  metricType: HealthMetricType!
+  value: Float!
+  recordedAt: Timestamp!
+  notes: String
+}
+
+type HealthGoal @table {
+  user: User!
+  metricType: HealthMetricType!
+  targetValue: Float!
+  startDate: Date!
+  endDate: Date!
+  status: String!
+  lowerBound: Float
+  upperBound: Float
+  description: String
+}
+
+type ProviderAccess @table {
+  user: User!
+  providerName: String!
+  accessGrantedAt: Timestamp!
+  providerEmail: String
+  accessExpiresAt: Timestamp
+  accessNotes: String
+}

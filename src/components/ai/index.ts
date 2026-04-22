@@ -1,0 +1,1 @@
+export { MedicalAssistant } from "./MedicalAssistant";

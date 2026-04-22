@@ -1,0 +1,1833 @@
+"""
+✨ `HealthGoal_KeyOutput` returns the primary key fields of table type `HealthGoal`.
+
+It has the same format as `HealthGoal_Key`, but is only used as mutation return value.
+"""
+scalar HealthGoal_KeyOutput
+"""
+✨ `HealthMetricRecord_KeyOutput` returns the primary key fields of table type `HealthMetricRecord`.
+
+It has the same format as `HealthMetricRecord_Key`, but is only used as mutation return value.
+"""
+scalar HealthMetricRecord_KeyOutput
+"""
+✨ `HealthMetricType_KeyOutput` returns the primary key fields of table type `HealthMetricType`.
+
+It has the same format as `HealthMetricType_Key`, but is only used as mutation return value.
+"""
+scalar HealthMetricType_KeyOutput
+"""
+✨ `ProviderAccess_KeyOutput` returns the primary key fields of table type `ProviderAccess`.
+
+It has the same format as `ProviderAccess_Key`, but is only used as mutation return value.
+"""
+scalar ProviderAccess_KeyOutput
+"""
+✨ `User_KeyOutput` returns the primary key fields of table type `User`.
+
+It has the same format as `User_Key`, but is only used as mutation return value.
+"""
+scalar User_KeyOutput
+"""
+✨ Generated data input type for table 'HealthGoal'. It includes all necessary fields for creating or upserting rows into table.
+"""
+input HealthGoal_Data {
+  """
+  ✨ Generated from Field `HealthGoal`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `HealthGoal`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `HealthGoal`.`metricTypeId` of type `UUID!`
+  """
+  metricTypeId: UUID
+  """
+  ✨ `_expr` server value variant of `metricTypeId` (✨ Generated from Field `HealthGoal`.`metricTypeId` of type `UUID!`)
+  """
+  metricTypeId_expr: UUID_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `HealthGoal`.`userId` of type `UUID!`
+  """
+  userId: UUID
+  """
+  ✨ `_expr` server value variant of `userId` (✨ Generated from Field `HealthGoal`.`userId` of type `UUID!`)
+  """
+  userId_expr: UUID_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `HealthGoal`.`metricType` of type `HealthMetricType!`
+  """
+  metricType: HealthMetricType_Key @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `HealthGoal`.`user` of type `User!`
+  """
+  user: User_Key @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `HealthGoal`.`description` of type `String`
+  """
+  description: String
+  """
+  ✨ `_expr` server value variant of `description` (✨ Generated from Field `HealthGoal`.`description` of type `String`)
+  """
+  description_expr: String_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `HealthGoal`.`endDate` of type `Date!`
+  """
+  endDate: Date
+  """
+  ✨ `_date` server value variant of `endDate` (✨ Generated from Field `HealthGoal`.`endDate` of type `Date!`)
+  """
+  endDate_date: Date_Relative @fdc_forbiddenInVariables
+  """
+  ✨ `_expr` server value variant of `endDate` (✨ Generated from Field `HealthGoal`.`endDate` of type `Date!`)
+  """
+  endDate_expr: Date_Expr @fdc_forbiddenInVariables
+  """
+  ✨ `_update` server value variant of `endDate` (✨ Generated from Field `HealthGoal`.`endDate` of type `Date!`)
+  """
+  endDate_update: [Date_Update!] @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `HealthGoal`.`lowerBound` of type `Float`
+  """
+  lowerBound: Float
+  """
+  ✨ `_expr` server value variant of `lowerBound` (✨ Generated from Field `HealthGoal`.`lowerBound` of type `Float`)
+  """
+  lowerBound_expr: Float_Expr @fdc_forbiddenInVariables
+  """
+  ✨ `_update` server value variant of `lowerBound` (✨ Generated from Field `HealthGoal`.`lowerBound` of type `Float`)
+  """
+  lowerBound_update: [Float_Update!] @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `HealthGoal`.`startDate` of type `Date!`
+  """
+  startDate: Date
+  """
+  ✨ `_date` server value variant of `startDate` (✨ Generated from Field `HealthGoal`.`startDate` of type `Date!`)
+  """
+  startDate_date: Date_Relative @fdc_forbiddenInVariables
+  """
+  ✨ `_expr` server value variant of `startDate` (✨ Generated from Field `HealthGoal`.`startDate` of type `Date!`)
+  """
+  startDate_expr: Date_Expr @fdc_forbiddenInVariables
+  """
+  ✨ `_update` server value variant of `startDate` (✨ Generated from Field `HealthGoal`.`startDate` of type `Date!`)
+  """
+  startDate_update: [Date_Update!] @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `HealthGoal`.`status` of type `String!`
+  """
+  status: String
+  """
+  ✨ `_expr` server value variant of `status` (✨ Generated from Field `HealthGoal`.`status` of type `String!`)
+  """
+  status_expr: String_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `HealthGoal`.`targetValue` of type `Float!`
+  """
+  targetValue: Float
+  """
+  ✨ `_expr` server value variant of `targetValue` (✨ Generated from Field `HealthGoal`.`targetValue` of type `Float!`)
+  """
+  targetValue_expr: Float_Expr @fdc_forbiddenInVariables
+  """
+  ✨ `_update` server value variant of `targetValue` (✨ Generated from Field `HealthGoal`.`targetValue` of type `Float!`)
+  """
+  targetValue_update: [Float_Update!] @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `HealthGoal`.`upperBound` of type `Float`
+  """
+  upperBound: Float
+  """
+  ✨ `_expr` server value variant of `upperBound` (✨ Generated from Field `HealthGoal`.`upperBound` of type `Float`)
+  """
+  upperBound_expr: Float_Expr @fdc_forbiddenInVariables
+  """
+  ✨ `_update` server value variant of `upperBound` (✨ Generated from Field `HealthGoal`.`upperBound` of type `Float`)
+  """
+  upperBound_update: [Float_Update!] @fdc_forbiddenInVariables
+}
+"""
+✨ Generated filter input type for table 'HealthGoal'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input HealthGoal_Filter {
+  """
+  Apply multiple filter conditions using `AND` logic.
+  """
+  _and: [HealthGoal_Filter!]
+  """
+  Negate the result of the provided filter condition.
+  """
+  _not: HealthGoal_Filter
+  """
+  Apply multiple filter conditions using `OR` logic.
+  """
+  _or: [HealthGoal_Filter!]
+  """
+  ✨ Generated from Field `HealthGoal`.`id` of type `UUID!`
+  """
+  id: UUID_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`metricTypeId` of type `UUID!`
+  """
+  metricTypeId: UUID_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`userId` of type `UUID!`
+  """
+  userId: UUID_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`metricType` of type `HealthMetricType!`
+  """
+  metricType: HealthMetricType_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`user` of type `User!`
+  """
+  user: User_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`description` of type `String`
+  """
+  description: String_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`endDate` of type `Date!`
+  """
+  endDate: Date_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`lowerBound` of type `Float`
+  """
+  lowerBound: Float_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`startDate` of type `Date!`
+  """
+  startDate: Date_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`status` of type `String!`
+  """
+  status: String_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`targetValue` of type `Float!`
+  """
+  targetValue: Float_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`upperBound` of type `Float`
+  """
+  upperBound: Float_Filter
+}
+"""
+✨ Generated first-row input type for table 'HealthGoal'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+"""
+input HealthGoal_FirstRow {
+  """
+  Order the result by the specified fields.
+  """
+  orderBy: [HealthGoal_Order!]
+  """
+  Filters rows based on the specified conditions.
+  """
+  where: HealthGoal_Filter
+}
+"""
+✨ Generated having input type for table 'HealthGoal'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input HealthGoal_Having {
+  """
+  Apply multiple Having conditions using `AND` logic.
+  """
+  _and: [HealthGoal_Having!]
+  """
+  Whether to apply DISTINCT to the aggregate function.
+  """
+  _distinct: Boolean
+  """
+  Negate the result of the provided Having condition.
+  """
+  _not: HealthGoal_Having
+  """
+  Apply multiple Having conditions using `OR` logic.
+  """
+  _or: [HealthGoal_Having!]
+  """
+  ✨ Generated from Field `HealthGoal`.`_count` of type `Int!`
+  """
+  _count: Int_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`description_count` of type `Int!`
+  """
+  description_count: Int_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`endDate_count` of type `Int!`
+  """
+  endDate_count: Int_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`id_count` of type `Int!`
+  """
+  id_count: Int_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`lowerBound_count` of type `Int!`
+  """
+  lowerBound_count: Int_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`metricTypeId_count` of type `Int!`
+  """
+  metricTypeId_count: Int_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`startDate_count` of type `Int!`
+  """
+  startDate_count: Int_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`status_count` of type `Int!`
+  """
+  status_count: Int_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`targetValue_count` of type `Int!`
+  """
+  targetValue_count: Int_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`upperBound_count` of type `Int!`
+  """
+  upperBound_count: Int_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`userId_count` of type `Int!`
+  """
+  userId_count: Int_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`lowerBound_sum` of type `Float`
+  """
+  lowerBound_sum: Float_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`targetValue_sum` of type `Float`
+  """
+  targetValue_sum: Float_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`upperBound_sum` of type `Float`
+  """
+  upperBound_sum: Float_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`lowerBound_avg` of type `Float`
+  """
+  lowerBound_avg: Float_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`targetValue_avg` of type `Float`
+  """
+  targetValue_avg: Float_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`upperBound_avg` of type `Float`
+  """
+  upperBound_avg: Float_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`endDate_min` of type `Date`
+  """
+  endDate_min: Date_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`lowerBound_min` of type `Float`
+  """
+  lowerBound_min: Float_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`startDate_min` of type `Date`
+  """
+  startDate_min: Date_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`targetValue_min` of type `Float`
+  """
+  targetValue_min: Float_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`upperBound_min` of type `Float`
+  """
+  upperBound_min: Float_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`endDate_max` of type `Date`
+  """
+  endDate_max: Date_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`lowerBound_max` of type `Float`
+  """
+  lowerBound_max: Float_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`startDate_max` of type `Date`
+  """
+  startDate_max: Date_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`targetValue_max` of type `Float`
+  """
+  targetValue_max: Float_Filter
+  """
+  ✨ Generated from Field `HealthGoal`.`upperBound_max` of type `Float`
+  """
+  upperBound_max: Float_Filter
+}
+"""
+✨ Generated key input type for table 'HealthGoal'. It represents the primary key fields used to uniquely identify a row in the table.
+"""
+input HealthGoal_Key {
+  """
+  ✨ Generated from Field `HealthGoal`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `HealthGoal`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr @fdc_forbiddenInVariables
+}
+"""
+✨ Generated list filter input type for table 'HealthGoal'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+"""
+input HealthGoal_ListFilter {
+  """
+  The desired number of objects that match the condition (defaults to at least one).
+  """
+  count: Int_Filter = {gt:0}
+  """
+  Condition of the related objects to filter for.
+  """
+  exist: HealthGoal_Filter
+}
+"""
+✨ Generated order input type for table 'HealthGoal'. This input defines the sorting order of rows in query results based on one or more fields.
+"""
+input HealthGoal_Order {
+  """
+  ✨ Generated from Field `HealthGoal`.`id` of type `UUID!`
+  """
+  id: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`metricTypeId` of type `UUID!`
+  """
+  metricTypeId: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`userId` of type `UUID!`
+  """
+  userId: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`metricType` of type `HealthMetricType!`
+  """
+  metricType: HealthMetricType_Order
+  """
+  ✨ Generated from Field `HealthGoal`.`user` of type `User!`
+  """
+  user: User_Order
+  """
+  ✨ Generated from Field `HealthGoal`.`description` of type `String`
+  """
+  description: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`endDate` of type `Date!`
+  """
+  endDate: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`lowerBound` of type `Float`
+  """
+  lowerBound: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`startDate` of type `Date!`
+  """
+  startDate: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`status` of type `String!`
+  """
+  status: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`targetValue` of type `Float!`
+  """
+  targetValue: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`upperBound` of type `Float`
+  """
+  upperBound: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`_count` of type `Int!`
+  """
+  _count: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`description_count` of type `Int!`
+  """
+  description_count: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`endDate_count` of type `Int!`
+  """
+  endDate_count: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`id_count` of type `Int!`
+  """
+  id_count: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`lowerBound_count` of type `Int!`
+  """
+  lowerBound_count: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`metricTypeId_count` of type `Int!`
+  """
+  metricTypeId_count: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`startDate_count` of type `Int!`
+  """
+  startDate_count: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`status_count` of type `Int!`
+  """
+  status_count: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`targetValue_count` of type `Int!`
+  """
+  targetValue_count: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`upperBound_count` of type `Int!`
+  """
+  upperBound_count: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`userId_count` of type `Int!`
+  """
+  userId_count: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`lowerBound_sum` of type `Float`
+  """
+  lowerBound_sum: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`targetValue_sum` of type `Float`
+  """
+  targetValue_sum: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`upperBound_sum` of type `Float`
+  """
+  upperBound_sum: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`lowerBound_avg` of type `Float`
+  """
+  lowerBound_avg: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`targetValue_avg` of type `Float`
+  """
+  targetValue_avg: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`upperBound_avg` of type `Float`
+  """
+  upperBound_avg: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`endDate_min` of type `Date`
+  """
+  endDate_min: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`lowerBound_min` of type `Float`
+  """
+  lowerBound_min: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`startDate_min` of type `Date`
+  """
+  startDate_min: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`targetValue_min` of type `Float`
+  """
+  targetValue_min: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`upperBound_min` of type `Float`
+  """
+  upperBound_min: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`endDate_max` of type `Date`
+  """
+  endDate_max: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`lowerBound_max` of type `Float`
+  """
+  lowerBound_max: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`startDate_max` of type `Date`
+  """
+  startDate_max: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`targetValue_max` of type `Float`
+  """
+  targetValue_max: OrderDirection
+  """
+  ✨ Generated from Field `HealthGoal`.`upperBound_max` of type `Float`
+  """
+  upperBound_max: OrderDirection
+}
+"""
+✨ Generated data input type for table 'HealthMetricRecord'. It includes all necessary fields for creating or upserting rows into table.
+"""
+input HealthMetricRecord_Data {
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `HealthMetricRecord`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`metricTypeId` of type `UUID!`
+  """
+  metricTypeId: UUID
+  """
+  ✨ `_expr` server value variant of `metricTypeId` (✨ Generated from Field `HealthMetricRecord`.`metricTypeId` of type `UUID!`)
+  """
+  metricTypeId_expr: UUID_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`userId` of type `UUID!`
+  """
+  userId: UUID
+  """
+  ✨ `_expr` server value variant of `userId` (✨ Generated from Field `HealthMetricRecord`.`userId` of type `UUID!`)
+  """
+  userId_expr: UUID_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`metricType` of type `HealthMetricType!`
+  """
+  metricType: HealthMetricType_Key @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`user` of type `User!`
+  """
+  user: User_Key @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`notes` of type `String`
+  """
+  notes: String
+  """
+  ✨ `_expr` server value variant of `notes` (✨ Generated from Field `HealthMetricRecord`.`notes` of type `String`)
+  """
+  notes_expr: String_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`recordedAt` of type `Timestamp!`
+  """
+  recordedAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `recordedAt` (✨ Generated from Field `HealthMetricRecord`.`recordedAt` of type `Timestamp!`)
+  """
+  recordedAt_expr: Timestamp_Expr @fdc_forbiddenInVariables
+  """
+  ✨ `_time` server value variant of `recordedAt` (✨ Generated from Field `HealthMetricRecord`.`recordedAt` of type `Timestamp!`)
+  """
+  recordedAt_time: Timestamp_Relative @fdc_forbiddenInVariables
+  """
+  ✨ `_update` server value variant of `recordedAt` (✨ Generated from Field `HealthMetricRecord`.`recordedAt` of type `Timestamp!`)
+  """
+  recordedAt_update: [Timestamp_Update!] @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`value` of type `Float!`
+  """
+  value: Float
+  """
+  ✨ `_expr` server value variant of `value` (✨ Generated from Field `HealthMetricRecord`.`value` of type `Float!`)
+  """
+  value_expr: Float_Expr @fdc_forbiddenInVariables
+  """
+  ✨ `_update` server value variant of `value` (✨ Generated from Field `HealthMetricRecord`.`value` of type `Float!`)
+  """
+  value_update: [Float_Update!] @fdc_forbiddenInVariables
+}
+"""
+✨ Generated filter input type for table 'HealthMetricRecord'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input HealthMetricRecord_Filter {
+  """
+  Apply multiple filter conditions using `AND` logic.
+  """
+  _and: [HealthMetricRecord_Filter!]
+  """
+  Negate the result of the provided filter condition.
+  """
+  _not: HealthMetricRecord_Filter
+  """
+  Apply multiple filter conditions using `OR` logic.
+  """
+  _or: [HealthMetricRecord_Filter!]
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`id` of type `UUID!`
+  """
+  id: UUID_Filter
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`metricTypeId` of type `UUID!`
+  """
+  metricTypeId: UUID_Filter
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`userId` of type `UUID!`
+  """
+  userId: UUID_Filter
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`metricType` of type `HealthMetricType!`
+  """
+  metricType: HealthMetricType_Filter
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`user` of type `User!`
+  """
+  user: User_Filter
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`notes` of type `String`
+  """
+  notes: String_Filter
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`recordedAt` of type `Timestamp!`
+  """
+  recordedAt: Timestamp_Filter
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`value` of type `Float!`
+  """
+  value: Float_Filter
+}
+"""
+✨ Generated first-row input type for table 'HealthMetricRecord'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+"""
+input HealthMetricRecord_FirstRow {
+  """
+  Order the result by the specified fields.
+  """
+  orderBy: [HealthMetricRecord_Order!]
+  """
+  Filters rows based on the specified conditions.
+  """
+  where: HealthMetricRecord_Filter
+}
+"""
+✨ Generated having input type for table 'HealthMetricRecord'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input HealthMetricRecord_Having {
+  """
+  Apply multiple Having conditions using `AND` logic.
+  """
+  _and: [HealthMetricRecord_Having!]
+  """
+  Whether to apply DISTINCT to the aggregate function.
+  """
+  _distinct: Boolean
+  """
+  Negate the result of the provided Having condition.
+  """
+  _not: HealthMetricRecord_Having
+  """
+  Apply multiple Having conditions using `OR` logic.
+  """
+  _or: [HealthMetricRecord_Having!]
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`_count` of type `Int!`
+  """
+  _count: Int_Filter
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`id_count` of type `Int!`
+  """
+  id_count: Int_Filter
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`metricTypeId_count` of type `Int!`
+  """
+  metricTypeId_count: Int_Filter
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`notes_count` of type `Int!`
+  """
+  notes_count: Int_Filter
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`recordedAt_count` of type `Int!`
+  """
+  recordedAt_count: Int_Filter
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`userId_count` of type `Int!`
+  """
+  userId_count: Int_Filter
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`value_count` of type `Int!`
+  """
+  value_count: Int_Filter
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`value_sum` of type `Float`
+  """
+  value_sum: Float_Filter
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`value_avg` of type `Float`
+  """
+  value_avg: Float_Filter
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`recordedAt_min` of type `Timestamp`
+  """
+  recordedAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`value_min` of type `Float`
+  """
+  value_min: Float_Filter
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`recordedAt_max` of type `Timestamp`
+  """
+  recordedAt_max: Timestamp_Filter
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`value_max` of type `Float`
+  """
+  value_max: Float_Filter
+}
+"""
+✨ Generated key input type for table 'HealthMetricRecord'. It represents the primary key fields used to uniquely identify a row in the table.
+"""
+input HealthMetricRecord_Key {
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `HealthMetricRecord`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr @fdc_forbiddenInVariables
+}
+"""
+✨ Generated list filter input type for table 'HealthMetricRecord'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+"""
+input HealthMetricRecord_ListFilter {
+  """
+  The desired number of objects that match the condition (defaults to at least one).
+  """
+  count: Int_Filter = {gt:0}
+  """
+  Condition of the related objects to filter for.
+  """
+  exist: HealthMetricRecord_Filter
+}
+"""
+✨ Generated order input type for table 'HealthMetricRecord'. This input defines the sorting order of rows in query results based on one or more fields.
+"""
+input HealthMetricRecord_Order {
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`id` of type `UUID!`
+  """
+  id: OrderDirection
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`metricTypeId` of type `UUID!`
+  """
+  metricTypeId: OrderDirection
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`userId` of type `UUID!`
+  """
+  userId: OrderDirection
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`metricType` of type `HealthMetricType!`
+  """
+  metricType: HealthMetricType_Order
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`user` of type `User!`
+  """
+  user: User_Order
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`notes` of type `String`
+  """
+  notes: OrderDirection
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`recordedAt` of type `Timestamp!`
+  """
+  recordedAt: OrderDirection
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`value` of type `Float!`
+  """
+  value: OrderDirection
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`_count` of type `Int!`
+  """
+  _count: OrderDirection
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`id_count` of type `Int!`
+  """
+  id_count: OrderDirection
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`metricTypeId_count` of type `Int!`
+  """
+  metricTypeId_count: OrderDirection
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`notes_count` of type `Int!`
+  """
+  notes_count: OrderDirection
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`recordedAt_count` of type `Int!`
+  """
+  recordedAt_count: OrderDirection
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`userId_count` of type `Int!`
+  """
+  userId_count: OrderDirection
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`value_count` of type `Int!`
+  """
+  value_count: OrderDirection
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`value_sum` of type `Float`
+  """
+  value_sum: OrderDirection
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`value_avg` of type `Float`
+  """
+  value_avg: OrderDirection
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`recordedAt_min` of type `Timestamp`
+  """
+  recordedAt_min: OrderDirection
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`value_min` of type `Float`
+  """
+  value_min: OrderDirection
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`recordedAt_max` of type `Timestamp`
+  """
+  recordedAt_max: OrderDirection
+  """
+  ✨ Generated from Field `HealthMetricRecord`.`value_max` of type `Float`
+  """
+  value_max: OrderDirection
+}
+"""
+✨ Generated data input type for table 'HealthMetricType'. It includes all necessary fields for creating or upserting rows into table.
+"""
+input HealthMetricType_Data {
+  """
+  ✨ Generated from Field `HealthMetricType`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `HealthMetricType`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `HealthMetricType`.`description` of type `String`
+  """
+  description: String
+  """
+  ✨ `_expr` server value variant of `description` (✨ Generated from Field `HealthMetricType`.`description` of type `String`)
+  """
+  description_expr: String_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `HealthMetricType`.`name` of type `String!`
+  """
+  name: String
+  """
+  ✨ `_expr` server value variant of `name` (✨ Generated from Field `HealthMetricType`.`name` of type `String!`)
+  """
+  name_expr: String_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `HealthMetricType`.`unit` of type `String!`
+  """
+  unit: String
+  """
+  ✨ `_expr` server value variant of `unit` (✨ Generated from Field `HealthMetricType`.`unit` of type `String!`)
+  """
+  unit_expr: String_Expr @fdc_forbiddenInVariables
+}
+"""
+✨ Generated filter input type for table 'HealthMetricType'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input HealthMetricType_Filter {
+  """
+  Apply multiple filter conditions using `AND` logic.
+  """
+  _and: [HealthMetricType_Filter!]
+  """
+  Negate the result of the provided filter condition.
+  """
+  _not: HealthMetricType_Filter
+  """
+  Apply multiple filter conditions using `OR` logic.
+  """
+  _or: [HealthMetricType_Filter!]
+  """
+  ✨ Generated from Field `HealthMetricType`.`id` of type `UUID!`
+  """
+  id: UUID_Filter
+  """
+  ✨ Generated from Field `HealthMetricType`.`description` of type `String`
+  """
+  description: String_Filter
+  """
+  ✨ Generated from Field `HealthMetricType`.`name` of type `String!`
+  """
+  name: String_Filter
+  """
+  ✨ Generated from Field `HealthMetricType`.`unit` of type `String!`
+  """
+  unit: String_Filter
+  """
+  ✨ Generated from Field `HealthMetricType`.`healthGoals_on_metricType` of type `[HealthGoal!]!`
+  """
+  healthGoals_on_metricType: HealthGoal_ListFilter
+  """
+  ✨ Generated from Field `HealthMetricType`.`healthMetricRecords_on_metricType` of type `[HealthMetricRecord!]!`
+  """
+  healthMetricRecords_on_metricType: HealthMetricRecord_ListFilter
+}
+"""
+✨ Generated first-row input type for table 'HealthMetricType'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+"""
+input HealthMetricType_FirstRow {
+  """
+  Order the result by the specified fields.
+  """
+  orderBy: [HealthMetricType_Order!]
+  """
+  Filters rows based on the specified conditions.
+  """
+  where: HealthMetricType_Filter
+}
+"""
+✨ Generated having input type for table 'HealthMetricType'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input HealthMetricType_Having {
+  """
+  Apply multiple Having conditions using `AND` logic.
+  """
+  _and: [HealthMetricType_Having!]
+  """
+  Whether to apply DISTINCT to the aggregate function.
+  """
+  _distinct: Boolean
+  """
+  Negate the result of the provided Having condition.
+  """
+  _not: HealthMetricType_Having
+  """
+  Apply multiple Having conditions using `OR` logic.
+  """
+  _or: [HealthMetricType_Having!]
+  """
+  ✨ Generated from Field `HealthMetricType`.`_count` of type `Int!`
+  """
+  _count: Int_Filter
+  """
+  ✨ Generated from Field `HealthMetricType`.`description_count` of type `Int!`
+  """
+  description_count: Int_Filter
+  """
+  ✨ Generated from Field `HealthMetricType`.`id_count` of type `Int!`
+  """
+  id_count: Int_Filter
+  """
+  ✨ Generated from Field `HealthMetricType`.`name_count` of type `Int!`
+  """
+  name_count: Int_Filter
+  """
+  ✨ Generated from Field `HealthMetricType`.`unit_count` of type `Int!`
+  """
+  unit_count: Int_Filter
+}
+"""
+✨ Generated key input type for table 'HealthMetricType'. It represents the primary key fields used to uniquely identify a row in the table.
+"""
+input HealthMetricType_Key {
+  """
+  ✨ Generated from Field `HealthMetricType`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `HealthMetricType`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr @fdc_forbiddenInVariables
+}
+"""
+✨ Generated list filter input type for table 'HealthMetricType'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+"""
+input HealthMetricType_ListFilter {
+  """
+  The desired number of objects that match the condition (defaults to at least one).
+  """
+  count: Int_Filter = {gt:0}
+  """
+  Condition of the related objects to filter for.
+  """
+  exist: HealthMetricType_Filter
+}
+"""
+✨ Generated order input type for table 'HealthMetricType'. This input defines the sorting order of rows in query results based on one or more fields.
+"""
+input HealthMetricType_Order {
+  """
+  ✨ Generated from Field `HealthMetricType`.`id` of type `UUID!`
+  """
+  id: OrderDirection
+  """
+  ✨ Generated from Field `HealthMetricType`.`description` of type `String`
+  """
+  description: OrderDirection
+  """
+  ✨ Generated from Field `HealthMetricType`.`name` of type `String!`
+  """
+  name: OrderDirection
+  """
+  ✨ Generated from Field `HealthMetricType`.`unit` of type `String!`
+  """
+  unit: OrderDirection
+  """
+  ✨ Generated from Field `HealthMetricType`.`_count` of type `Int!`
+  """
+  _count: OrderDirection
+  """
+  ✨ Generated from Field `HealthMetricType`.`description_count` of type `Int!`
+  """
+  description_count: OrderDirection
+  """
+  ✨ Generated from Field `HealthMetricType`.`id_count` of type `Int!`
+  """
+  id_count: OrderDirection
+  """
+  ✨ Generated from Field `HealthMetricType`.`name_count` of type `Int!`
+  """
+  name_count: OrderDirection
+  """
+  ✨ Generated from Field `HealthMetricType`.`unit_count` of type `Int!`
+  """
+  unit_count: OrderDirection
+}
+"""
+✨ Generated data input type for table 'ProviderAccess'. It includes all necessary fields for creating or upserting rows into table.
+"""
+input ProviderAccess_Data {
+  """
+  ✨ Generated from Field `ProviderAccess`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `ProviderAccess`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `ProviderAccess`.`userId` of type `UUID!`
+  """
+  userId: UUID
+  """
+  ✨ `_expr` server value variant of `userId` (✨ Generated from Field `ProviderAccess`.`userId` of type `UUID!`)
+  """
+  userId_expr: UUID_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `ProviderAccess`.`user` of type `User!`
+  """
+  user: User_Key @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `ProviderAccess`.`accessExpiresAt` of type `Timestamp`
+  """
+  accessExpiresAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `accessExpiresAt` (✨ Generated from Field `ProviderAccess`.`accessExpiresAt` of type `Timestamp`)
+  """
+  accessExpiresAt_expr: Timestamp_Expr @fdc_forbiddenInVariables
+  """
+  ✨ `_time` server value variant of `accessExpiresAt` (✨ Generated from Field `ProviderAccess`.`accessExpiresAt` of type `Timestamp`)
+  """
+  accessExpiresAt_time: Timestamp_Relative @fdc_forbiddenInVariables
+  """
+  ✨ `_update` server value variant of `accessExpiresAt` (✨ Generated from Field `ProviderAccess`.`accessExpiresAt` of type `Timestamp`)
+  """
+  accessExpiresAt_update: [Timestamp_Update!] @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `ProviderAccess`.`accessGrantedAt` of type `Timestamp!`
+  """
+  accessGrantedAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `accessGrantedAt` (✨ Generated from Field `ProviderAccess`.`accessGrantedAt` of type `Timestamp!`)
+  """
+  accessGrantedAt_expr: Timestamp_Expr @fdc_forbiddenInVariables
+  """
+  ✨ `_time` server value variant of `accessGrantedAt` (✨ Generated from Field `ProviderAccess`.`accessGrantedAt` of type `Timestamp!`)
+  """
+  accessGrantedAt_time: Timestamp_Relative @fdc_forbiddenInVariables
+  """
+  ✨ `_update` server value variant of `accessGrantedAt` (✨ Generated from Field `ProviderAccess`.`accessGrantedAt` of type `Timestamp!`)
+  """
+  accessGrantedAt_update: [Timestamp_Update!] @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `ProviderAccess`.`accessNotes` of type `String`
+  """
+  accessNotes: String
+  """
+  ✨ `_expr` server value variant of `accessNotes` (✨ Generated from Field `ProviderAccess`.`accessNotes` of type `String`)
+  """
+  accessNotes_expr: String_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `ProviderAccess`.`providerEmail` of type `String`
+  """
+  providerEmail: String
+  """
+  ✨ `_expr` server value variant of `providerEmail` (✨ Generated from Field `ProviderAccess`.`providerEmail` of type `String`)
+  """
+  providerEmail_expr: String_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `ProviderAccess`.`providerName` of type `String!`
+  """
+  providerName: String
+  """
+  ✨ `_expr` server value variant of `providerName` (✨ Generated from Field `ProviderAccess`.`providerName` of type `String!`)
+  """
+  providerName_expr: String_Expr @fdc_forbiddenInVariables
+}
+"""
+✨ Generated filter input type for table 'ProviderAccess'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input ProviderAccess_Filter {
+  """
+  Apply multiple filter conditions using `AND` logic.
+  """
+  _and: [ProviderAccess_Filter!]
+  """
+  Negate the result of the provided filter condition.
+  """
+  _not: ProviderAccess_Filter
+  """
+  Apply multiple filter conditions using `OR` logic.
+  """
+  _or: [ProviderAccess_Filter!]
+  """
+  ✨ Generated from Field `ProviderAccess`.`id` of type `UUID!`
+  """
+  id: UUID_Filter
+  """
+  ✨ Generated from Field `ProviderAccess`.`userId` of type `UUID!`
+  """
+  userId: UUID_Filter
+  """
+  ✨ Generated from Field `ProviderAccess`.`user` of type `User!`
+  """
+  user: User_Filter
+  """
+  ✨ Generated from Field `ProviderAccess`.`accessExpiresAt` of type `Timestamp`
+  """
+  accessExpiresAt: Timestamp_Filter
+  """
+  ✨ Generated from Field `ProviderAccess`.`accessGrantedAt` of type `Timestamp!`
+  """
+  accessGrantedAt: Timestamp_Filter
+  """
+  ✨ Generated from Field `ProviderAccess`.`accessNotes` of type `String`
+  """
+  accessNotes: String_Filter
+  """
+  ✨ Generated from Field `ProviderAccess`.`providerEmail` of type `String`
+  """
+  providerEmail: String_Filter
+  """
+  ✨ Generated from Field `ProviderAccess`.`providerName` of type `String!`
+  """
+  providerName: String_Filter
+}
+"""
+✨ Generated first-row input type for table 'ProviderAccess'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+"""
+input ProviderAccess_FirstRow {
+  """
+  Order the result by the specified fields.
+  """
+  orderBy: [ProviderAccess_Order!]
+  """
+  Filters rows based on the specified conditions.
+  """
+  where: ProviderAccess_Filter
+}
+"""
+✨ Generated having input type for table 'ProviderAccess'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input ProviderAccess_Having {
+  """
+  Apply multiple Having conditions using `AND` logic.
+  """
+  _and: [ProviderAccess_Having!]
+  """
+  Whether to apply DISTINCT to the aggregate function.
+  """
+  _distinct: Boolean
+  """
+  Negate the result of the provided Having condition.
+  """
+  _not: ProviderAccess_Having
+  """
+  Apply multiple Having conditions using `OR` logic.
+  """
+  _or: [ProviderAccess_Having!]
+  """
+  ✨ Generated from Field `ProviderAccess`.`_count` of type `Int!`
+  """
+  _count: Int_Filter
+  """
+  ✨ Generated from Field `ProviderAccess`.`accessExpiresAt_count` of type `Int!`
+  """
+  accessExpiresAt_count: Int_Filter
+  """
+  ✨ Generated from Field `ProviderAccess`.`accessGrantedAt_count` of type `Int!`
+  """
+  accessGrantedAt_count: Int_Filter
+  """
+  ✨ Generated from Field `ProviderAccess`.`accessNotes_count` of type `Int!`
+  """
+  accessNotes_count: Int_Filter
+  """
+  ✨ Generated from Field `ProviderAccess`.`id_count` of type `Int!`
+  """
+  id_count: Int_Filter
+  """
+  ✨ Generated from Field `ProviderAccess`.`providerEmail_count` of type `Int!`
+  """
+  providerEmail_count: Int_Filter
+  """
+  ✨ Generated from Field `ProviderAccess`.`providerName_count` of type `Int!`
+  """
+  providerName_count: Int_Filter
+  """
+  ✨ Generated from Field `ProviderAccess`.`userId_count` of type `Int!`
+  """
+  userId_count: Int_Filter
+  """
+  ✨ Generated from Field `ProviderAccess`.`accessExpiresAt_min` of type `Timestamp`
+  """
+  accessExpiresAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `ProviderAccess`.`accessGrantedAt_min` of type `Timestamp`
+  """
+  accessGrantedAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `ProviderAccess`.`accessExpiresAt_max` of type `Timestamp`
+  """
+  accessExpiresAt_max: Timestamp_Filter
+  """
+  ✨ Generated from Field `ProviderAccess`.`accessGrantedAt_max` of type `Timestamp`
+  """
+  accessGrantedAt_max: Timestamp_Filter
+}
+"""
+✨ Generated key input type for table 'ProviderAccess'. It represents the primary key fields used to uniquely identify a row in the table.
+"""
+input ProviderAccess_Key {
+  """
+  ✨ Generated from Field `ProviderAccess`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `ProviderAccess`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr @fdc_forbiddenInVariables
+}
+"""
+✨ Generated list filter input type for table 'ProviderAccess'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+"""
+input ProviderAccess_ListFilter {
+  """
+  The desired number of objects that match the condition (defaults to at least one).
+  """
+  count: Int_Filter = {gt:0}
+  """
+  Condition of the related objects to filter for.
+  """
+  exist: ProviderAccess_Filter
+}
+"""
+✨ Generated order input type for table 'ProviderAccess'. This input defines the sorting order of rows in query results based on one or more fields.
+"""
+input ProviderAccess_Order {
+  """
+  ✨ Generated from Field `ProviderAccess`.`id` of type `UUID!`
+  """
+  id: OrderDirection
+  """
+  ✨ Generated from Field `ProviderAccess`.`userId` of type `UUID!`
+  """
+  userId: OrderDirection
+  """
+  ✨ Generated from Field `ProviderAccess`.`user` of type `User!`
+  """
+  user: User_Order
+  """
+  ✨ Generated from Field `ProviderAccess`.`accessExpiresAt` of type `Timestamp`
+  """
+  accessExpiresAt: OrderDirection
+  """
+  ✨ Generated from Field `ProviderAccess`.`accessGrantedAt` of type `Timestamp!`
+  """
+  accessGrantedAt: OrderDirection
+  """
+  ✨ Generated from Field `ProviderAccess`.`accessNotes` of type `String`
+  """
+  accessNotes: OrderDirection
+  """
+  ✨ Generated from Field `ProviderAccess`.`providerEmail` of type `String`
+  """
+  providerEmail: OrderDirection
+  """
+  ✨ Generated from Field `ProviderAccess`.`providerName` of type `String!`
+  """
+  providerName: OrderDirection
+  """
+  ✨ Generated from Field `ProviderAccess`.`_count` of type `Int!`
+  """
+  _count: OrderDirection
+  """
+  ✨ Generated from Field `ProviderAccess`.`accessExpiresAt_count` of type `Int!`
+  """
+  accessExpiresAt_count: OrderDirection
+  """
+  ✨ Generated from Field `ProviderAccess`.`accessGrantedAt_count` of type `Int!`
+  """
+  accessGrantedAt_count: OrderDirection
+  """
+  ✨ Generated from Field `ProviderAccess`.`accessNotes_count` of type `Int!`
+  """
+  accessNotes_count: OrderDirection
+  """
+  ✨ Generated from Field `ProviderAccess`.`id_count` of type `Int!`
+  """
+  id_count: OrderDirection
+  """
+  ✨ Generated from Field `ProviderAccess`.`providerEmail_count` of type `Int!`
+  """
+  providerEmail_count: OrderDirection
+  """
+  ✨ Generated from Field `ProviderAccess`.`providerName_count` of type `Int!`
+  """
+  providerName_count: OrderDirection
+  """
+  ✨ Generated from Field `ProviderAccess`.`userId_count` of type `Int!`
+  """
+  userId_count: OrderDirection
+  """
+  ✨ Generated from Field `ProviderAccess`.`accessExpiresAt_min` of type `Timestamp`
+  """
+  accessExpiresAt_min: OrderDirection
+  """
+  ✨ Generated from Field `ProviderAccess`.`accessGrantedAt_min` of type `Timestamp`
+  """
+  accessGrantedAt_min: OrderDirection
+  """
+  ✨ Generated from Field `ProviderAccess`.`accessExpiresAt_max` of type `Timestamp`
+  """
+  accessExpiresAt_max: OrderDirection
+  """
+  ✨ Generated from Field `ProviderAccess`.`accessGrantedAt_max` of type `Timestamp`
+  """
+  accessGrantedAt_max: OrderDirection
+}
+"""
+✨ Generated data input type for table 'User'. It includes all necessary fields for creating or upserting rows into table.
+"""
+input User_Data {
+  """
+  ✨ Generated from Field `User`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `User`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `User`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `User`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_expr: Timestamp_Expr @fdc_forbiddenInVariables
+  """
+  ✨ `_time` server value variant of `createdAt` (✨ Generated from Field `User`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_time: Timestamp_Relative @fdc_forbiddenInVariables
+  """
+  ✨ `_update` server value variant of `createdAt` (✨ Generated from Field `User`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_update: [Timestamp_Update!] @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `User`.`dateOfBirth` of type `Date!`
+  """
+  dateOfBirth: Date
+  """
+  ✨ `_date` server value variant of `dateOfBirth` (✨ Generated from Field `User`.`dateOfBirth` of type `Date!`)
+  """
+  dateOfBirth_date: Date_Relative @fdc_forbiddenInVariables
+  """
+  ✨ `_expr` server value variant of `dateOfBirth` (✨ Generated from Field `User`.`dateOfBirth` of type `Date!`)
+  """
+  dateOfBirth_expr: Date_Expr @fdc_forbiddenInVariables
+  """
+  ✨ `_update` server value variant of `dateOfBirth` (✨ Generated from Field `User`.`dateOfBirth` of type `Date!`)
+  """
+  dateOfBirth_update: [Date_Update!] @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `User`.`displayName` of type `String!`
+  """
+  displayName: String
+  """
+  ✨ `_expr` server value variant of `displayName` (✨ Generated from Field `User`.`displayName` of type `String!`)
+  """
+  displayName_expr: String_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `User`.`email` of type `String`
+  """
+  email: String
+  """
+  ✨ `_expr` server value variant of `email` (✨ Generated from Field `User`.`email` of type `String`)
+  """
+  email_expr: String_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `User`.`gender` of type `String!`
+  """
+  gender: String
+  """
+  ✨ `_expr` server value variant of `gender` (✨ Generated from Field `User`.`gender` of type `String!`)
+  """
+  gender_expr: String_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `User`.`height` of type `Float`
+  """
+  height: Float
+  """
+  ✨ `_expr` server value variant of `height` (✨ Generated from Field `User`.`height` of type `Float`)
+  """
+  height_expr: Float_Expr @fdc_forbiddenInVariables
+  """
+  ✨ `_update` server value variant of `height` (✨ Generated from Field `User`.`height` of type `Float`)
+  """
+  height_update: [Float_Update!] @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `User`.`photoUrl` of type `String`
+  """
+  photoUrl: String
+  """
+  ✨ `_expr` server value variant of `photoUrl` (✨ Generated from Field `User`.`photoUrl` of type `String`)
+  """
+  photoUrl_expr: String_Expr @fdc_forbiddenInVariables
+  """
+  ✨ Generated from Field `User`.`weight` of type `Float`
+  """
+  weight: Float
+  """
+  ✨ `_expr` server value variant of `weight` (✨ Generated from Field `User`.`weight` of type `Float`)
+  """
+  weight_expr: Float_Expr @fdc_forbiddenInVariables
+  """
+  ✨ `_update` server value variant of `weight` (✨ Generated from Field `User`.`weight` of type `Float`)
+  """
+  weight_update: [Float_Update!] @fdc_forbiddenInVariables
+}
+"""
+✨ Generated filter input type for table 'User'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input User_Filter {
+  """
+  Apply multiple filter conditions using `AND` logic.
+  """
+  _and: [User_Filter!]
+  """
+  Negate the result of the provided filter condition.
+  """
+  _not: User_Filter
+  """
+  Apply multiple filter conditions using `OR` logic.
+  """
+  _or: [User_Filter!]
+  """
+  ✨ Generated from Field `User`.`id` of type `UUID!`
+  """
+  id: UUID_Filter
+  """
+  ✨ Generated from Field `User`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp_Filter
+  """
+  ✨ Generated from Field `User`.`dateOfBirth` of type `Date!`
+  """
+  dateOfBirth: Date_Filter
+  """
+  ✨ Generated from Field `User`.`displayName` of type `String!`
+  """
+  displayName: String_Filter
+  """
+  ✨ Generated from Field `User`.`email` of type `String`
+  """
+  email: String_Filter
+  """
+  ✨ Generated from Field `User`.`gender` of type `String!`
+  """
+  gender: String_Filter
+  """
+  ✨ Generated from Field `User`.`height` of type `Float`
+  """
+  height: Float_Filter
+  """
+  ✨ Generated from Field `User`.`photoUrl` of type `String`
+  """
+  photoUrl: String_Filter
+  """
+  ✨ Generated from Field `User`.`weight` of type `Float`
+  """
+  weight: Float_Filter
+  """
+  ✨ Generated from Field `User`.`healthGoals_on_user` of type `[HealthGoal!]!`
+  """
+  healthGoals_on_user: HealthGoal_ListFilter
+  """
+  ✨ Generated from Field `User`.`healthMetricRecords_on_user` of type `[HealthMetricRecord!]!`
+  """
+  healthMetricRecords_on_user: HealthMetricRecord_ListFilter
+  """
+  ✨ Generated from Field `User`.`providerAccesses_on_user` of type `[ProviderAccess!]!`
+  """
+  providerAccesses_on_user: ProviderAccess_ListFilter
+}
+"""
+✨ Generated first-row input type for table 'User'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+"""
+input User_FirstRow {
+  """
+  Order the result by the specified fields.
+  """
+  orderBy: [User_Order!]
+  """
+  Filters rows based on the specified conditions.
+  """
+  where: User_Filter
+}
+"""
+✨ Generated having input type for table 'User'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input User_Having {
+  """
+  Apply multiple Having conditions using `AND` logic.
+  """
+  _and: [User_Having!]
+  """
+  Whether to apply DISTINCT to the aggregate function.
+  """
+  _distinct: Boolean
+  """
+  Negate the result of the provided Having condition.
+  """
+  _not: User_Having
+  """
+  Apply multiple Having conditions using `OR` logic.
+  """
+  _or: [User_Having!]
+  """
+  ✨ Generated from Field `User`.`_count` of type `Int!`
+  """
+  _count: Int_Filter
+  """
+  ✨ Generated from Field `User`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: Int_Filter
+  """
+  ✨ Generated from Field `User`.`dateOfBirth_count` of type `Int!`
+  """
+  dateOfBirth_count: Int_Filter
+  """
+  ✨ Generated from Field `User`.`displayName_count` of type `Int!`
+  """
+  displayName_count: Int_Filter
+  """
+  ✨ Generated from Field `User`.`email_count` of type `Int!`
+  """
+  email_count: Int_Filter
+  """
+  ✨ Generated from Field `User`.`gender_count` of type `Int!`
+  """
+  gender_count: Int_Filter
+  """
+  ✨ Generated from Field `User`.`height_count` of type `Int!`
+  """
+  height_count: Int_Filter
+  """
+  ✨ Generated from Field `User`.`id_count` of type `Int!`
+  """
+  id_count: Int_Filter
+  """
+  ✨ Generated from Field `User`.`photoUrl_count` of type `Int!`
+  """
+  photoUrl_count: Int_Filter
+  """
+  ✨ Generated from Field `User`.`weight_count` of type `Int!`
+  """
+  weight_count: Int_Filter
+  """
+  ✨ Generated from Field `User`.`height_sum` of type `Float`
+  """
+  height_sum: Float_Filter
+  """
+  ✨ Generated from Field `User`.`weight_sum` of type `Float`
+  """
+  weight_sum: Float_Filter
+  """
+  ✨ Generated from Field `User`.`height_avg` of type `Float`
+  """
+  height_avg: Float_Filter
+  """
+  ✨ Generated from Field `User`.`weight_avg` of type `Float`
+  """
+  weight_avg: Float_Filter
+  """
+  ✨ Generated from Field `User`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `User`.`dateOfBirth_min` of type `Date`
+  """
+  dateOfBirth_min: Date_Filter
+  """
+  ✨ Generated from Field `User`.`height_min` of type `Float`
+  """
+  height_min: Float_Filter
+  """
+  ✨ Generated from Field `User`.`weight_min` of type `Float`
+  """
+  weight_min: Float_Filter
+  """
+  ✨ Generated from Field `User`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: Timestamp_Filter
+  """
+  ✨ Generated from Field `User`.`dateOfBirth_max` of type `Date`
+  """
+  dateOfBirth_max: Date_Filter
+  """
+  ✨ Generated from Field `User`.`height_max` of type `Float`
+  """
+  height_max: Float_Filter
+  """
+  ✨ Generated from Field `User`.`weight_max` of type `Float`
+  """
+  weight_max: Float_Filter
+}
+"""
+✨ Generated key input type for table 'User'. It represents the primary key fields used to uniquely identify a row in the table.
+"""
+input User_Key {
+  """
+  ✨ Generated from Field `User`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `User`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr @fdc_forbiddenInVariables
+}
+"""
+✨ Generated list filter input type for table 'User'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+"""
+input User_ListFilter {
+  """
+  The desired number of objects that match the condition (defaults to at least one).
+  """
+  count: Int_Filter = {gt:0}
+  """
+  Condition of the related objects to filter for.
+  """
+  exist: User_Filter
+}
+"""
+✨ Generated order input type for table 'User'. This input defines the sorting order of rows in query results based on one or more fields.
+"""
+input User_Order {
+  """
+  ✨ Generated from Field `User`.`id` of type `UUID!`
+  """
+  id: OrderDirection
+  """
+  ✨ Generated from Field `User`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: OrderDirection
+  """
+  ✨ Generated from Field `User`.`dateOfBirth` of type `Date!`
+  """
+  dateOfBirth: OrderDirection
+  """
+  ✨ Generated from Field `User`.`displayName` of type `String!`
+  """
+  displayName: OrderDirection
+  """
+  ✨ Generated from Field `User`.`email` of type `String`
+  """
+  email: OrderDirection
+  """
+  ✨ Generated from Field `User`.`gender` of type `String!`
+  """
+  gender: OrderDirection
+  """
+  ✨ Generated from Field `User`.`height` of type `Float`
+  """
+  height: OrderDirection
+  """
+  ✨ Generated from Field `User`.`photoUrl` of type `String`
+  """
+  photoUrl: OrderDirection
+  """
+  ✨ Generated from Field `User`.`weight` of type `Float`
+  """
+  weight: OrderDirection
+  """
+  ✨ Generated from Field `User`.`_count` of type `Int!`
+  """
+  _count: OrderDirection
+  """
+  ✨ Generated from Field `User`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: OrderDirection
+  """
+  ✨ Generated from Field `User`.`dateOfBirth_count` of type `Int!`
+  """
+  dateOfBirth_count: OrderDirection
+  """
+  ✨ Generated from Field `User`.`displayName_count` of type `Int!`
+  """
+  displayName_count: OrderDirection
+  """
+  ✨ Generated from Field `User`.`email_count` of type `Int!`
+  """
+  email_count: OrderDirection
+  """
+  ✨ Generated from Field `User`.`gender_count` of type `Int!`
+  """
+  gender_count: OrderDirection
+  """
+  ✨ Generated from Field `User`.`height_count` of type `Int!`
+  """
+  height_count: OrderDirection
+  """
+  ✨ Generated from Field `User`.`id_count` of type `Int!`
+  """
+  id_count: OrderDirection
+  """
+  ✨ Generated from Field `User`.`photoUrl_count` of type `Int!`
+  """
+  photoUrl_count: OrderDirection
+  """
+  ✨ Generated from Field `User`.`weight_count` of type `Int!`
+  """
+  weight_count: OrderDirection
+  """
+  ✨ Generated from Field `User`.`height_sum` of type `Float`
+  """
+  height_sum: OrderDirection
+  """
+  ✨ Generated from Field `User`.`weight_sum` of type `Float`
+  """
+  weight_sum: OrderDirection
+  """
+  ✨ Generated from Field `User`.`height_avg` of type `Float`
+  """
+  height_avg: OrderDirection
+  """
+  ✨ Generated from Field `User`.`weight_avg` of type `Float`
+  """
+  weight_avg: OrderDirection
+  """
+  ✨ Generated from Field `User`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: OrderDirection
+  """
+  ✨ Generated from Field `User`.`dateOfBirth_min` of type `Date`
+  """
+  dateOfBirth_min: OrderDirection
+  """
+  ✨ Generated from Field `User`.`height_min` of type `Float`
+  """
+  height_min: OrderDirection
+  """
+  ✨ Generated from Field `User`.`weight_min` of type `Float`
+  """
+  weight_min: OrderDirection
+  """
+  ✨ Generated from Field `User`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: OrderDirection
+  """
+  ✨ Generated from Field `User`.`dateOfBirth_max` of type `Date`
+  """
+  dateOfBirth_max: OrderDirection
+  """
+  ✨ Generated from Field `User`.`height_max` of type `Float`
+  """
+  height_max: OrderDirection
+  """
+  ✨ Generated from Field `User`.`weight_max` of type `Float`
+  """
+  weight_max: OrderDirection
+}

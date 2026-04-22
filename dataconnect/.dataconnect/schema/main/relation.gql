@@ -1,0 +1,776 @@
+extend type HealthGoal {
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "HealthGoal", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `HealthGoal` table.
+  """
+  _count: Int! @fdc_generated(from: "HealthGoal.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `HealthGoal` table where the `description` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  description_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "HealthGoal.description", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `HealthGoal` table where the `endDate` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  endDate_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "HealthGoal.endDate", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `HealthGoal` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "HealthGoal.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `HealthGoal` table where the `lowerBound` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  lowerBound_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "HealthGoal.lowerBound", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `HealthGoal` table where the `metricTypeId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  metricTypeId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "HealthGoal.metricTypeId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `HealthGoal` table where the `startDate` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  startDate_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "HealthGoal.startDate", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `HealthGoal` table where the `status` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  status_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "HealthGoal.status", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `HealthGoal` table where the `targetValue` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  targetValue_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "HealthGoal.targetValue", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `HealthGoal` table where the `upperBound` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  upperBound_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "HealthGoal.upperBound", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `HealthGoal` table where the `userId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  userId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "HealthGoal.userId", purpose: QUERY_COUNT)
+  """
+  ✨ Sum the `lowerBound` field in the `HealthGoal` table.
+  """
+  lowerBound_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "HealthGoal.lowerBound", purpose: QUERY_SUM)
+  """
+  ✨ Sum the `targetValue` field in the `HealthGoal` table.
+  """
+  targetValue_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "HealthGoal.targetValue", purpose: QUERY_SUM)
+  """
+  ✨ Sum the `upperBound` field in the `HealthGoal` table.
+  """
+  upperBound_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "HealthGoal.upperBound", purpose: QUERY_SUM)
+  """
+  ✨ Average the `lowerBound` field in the `HealthGoal` table.
+  """
+  lowerBound_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "HealthGoal.lowerBound", purpose: QUERY_AVG)
+  """
+  ✨ Average the `targetValue` field in the `HealthGoal` table.
+  """
+  targetValue_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "HealthGoal.targetValue", purpose: QUERY_AVG)
+  """
+  ✨ Average the `upperBound` field in the `HealthGoal` table.
+  """
+  upperBound_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "HealthGoal.upperBound", purpose: QUERY_AVG)
+  """
+  ✨ Minimum of the `endDate` field in the `HealthGoal` table.
+  """
+  endDate_min: Date @fdc_generated(from: "HealthGoal.endDate", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `lowerBound` field in the `HealthGoal` table.
+  """
+  lowerBound_min: Float @fdc_generated(from: "HealthGoal.lowerBound", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `startDate` field in the `HealthGoal` table.
+  """
+  startDate_min: Date @fdc_generated(from: "HealthGoal.startDate", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `targetValue` field in the `HealthGoal` table.
+  """
+  targetValue_min: Float @fdc_generated(from: "HealthGoal.targetValue", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `upperBound` field in the `HealthGoal` table.
+  """
+  upperBound_min: Float @fdc_generated(from: "HealthGoal.upperBound", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `endDate` field in the `HealthGoal` table.
+  """
+  endDate_max: Date @fdc_generated(from: "HealthGoal.endDate", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `lowerBound` field in the `HealthGoal` table.
+  """
+  lowerBound_max: Float @fdc_generated(from: "HealthGoal.lowerBound", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `startDate` field in the `HealthGoal` table.
+  """
+  startDate_max: Date @fdc_generated(from: "HealthGoal.startDate", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `targetValue` field in the `HealthGoal` table.
+  """
+  targetValue_max: Float @fdc_generated(from: "HealthGoal.targetValue", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `upperBound` field in the `HealthGoal` table.
+  """
+  upperBound_max: Float @fdc_generated(from: "HealthGoal.upperBound", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "HealthGoal.id", purpose: ENTITY_ID)
+}
+extend type HealthMetricRecord {
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "HealthMetricRecord", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `HealthMetricRecord` table.
+  """
+  _count: Int! @fdc_generated(from: "HealthMetricRecord.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `HealthMetricRecord` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "HealthMetricRecord.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `HealthMetricRecord` table where the `metricTypeId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  metricTypeId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "HealthMetricRecord.metricTypeId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `HealthMetricRecord` table where the `notes` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  notes_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "HealthMetricRecord.notes", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `HealthMetricRecord` table where the `recordedAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  recordedAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "HealthMetricRecord.recordedAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `HealthMetricRecord` table where the `userId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  userId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "HealthMetricRecord.userId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `HealthMetricRecord` table where the `value` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  value_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "HealthMetricRecord.value", purpose: QUERY_COUNT)
+  """
+  ✨ Sum the `value` field in the `HealthMetricRecord` table.
+  """
+  value_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "HealthMetricRecord.value", purpose: QUERY_SUM)
+  """
+  ✨ Average the `value` field in the `HealthMetricRecord` table.
+  """
+  value_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "HealthMetricRecord.value", purpose: QUERY_AVG)
+  """
+  ✨ Minimum of the `recordedAt` field in the `HealthMetricRecord` table.
+  """
+  recordedAt_min: Timestamp @fdc_generated(from: "HealthMetricRecord.recordedAt", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `value` field in the `HealthMetricRecord` table.
+  """
+  value_min: Float @fdc_generated(from: "HealthMetricRecord.value", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `recordedAt` field in the `HealthMetricRecord` table.
+  """
+  recordedAt_max: Timestamp @fdc_generated(from: "HealthMetricRecord.recordedAt", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `value` field in the `HealthMetricRecord` table.
+  """
+  value_max: Float @fdc_generated(from: "HealthMetricRecord.value", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "HealthMetricRecord.id", purpose: ENTITY_ID)
+}
+extend type HealthMetricType {
+  """
+  ✨ List `HealthGoal` objects in a one-to-many relationship (where `HealthGoal`.`metricType` is this object).
+  """
+  healthGoals_on_metricType(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: HealthGoal_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [HealthGoal_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: HealthGoal_Having
+  ): [HealthGoal!]! @fdc_generated(from: "HealthGoal.metricType", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `HealthMetricRecord` objects in a one-to-many relationship (where `HealthMetricRecord`.`metricType` is this object).
+  """
+  healthMetricRecords_on_metricType(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: HealthMetricRecord_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [HealthMetricRecord_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: HealthMetricRecord_Having
+  ): [HealthMetricRecord!]! @fdc_generated(from: "HealthMetricRecord.metricType", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "HealthMetricType", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `HealthMetricType` table.
+  """
+  _count: Int! @fdc_generated(from: "HealthMetricType.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `HealthMetricType` table where the `description` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  description_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "HealthMetricType.description", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `HealthMetricType` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "HealthMetricType.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `HealthMetricType` table where the `name` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  name_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "HealthMetricType.name", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `HealthMetricType` table where the `unit` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  unit_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "HealthMetricType.unit", purpose: QUERY_COUNT)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "HealthMetricType.id", purpose: ENTITY_ID)
+}
+extend type ProviderAccess {
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "ProviderAccess", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `ProviderAccess` table.
+  """
+  _count: Int! @fdc_generated(from: "ProviderAccess.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ProviderAccess` table where the `accessExpiresAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  accessExpiresAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ProviderAccess.accessExpiresAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ProviderAccess` table where the `accessGrantedAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  accessGrantedAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ProviderAccess.accessGrantedAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ProviderAccess` table where the `accessNotes` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  accessNotes_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ProviderAccess.accessNotes", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ProviderAccess` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ProviderAccess.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ProviderAccess` table where the `providerEmail` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  providerEmail_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ProviderAccess.providerEmail", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ProviderAccess` table where the `providerName` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  providerName_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ProviderAccess.providerName", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `ProviderAccess` table where the `userId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  userId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "ProviderAccess.userId", purpose: QUERY_COUNT)
+  """
+  ✨ Minimum of the `accessExpiresAt` field in the `ProviderAccess` table.
+  """
+  accessExpiresAt_min: Timestamp @fdc_generated(from: "ProviderAccess.accessExpiresAt", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `accessGrantedAt` field in the `ProviderAccess` table.
+  """
+  accessGrantedAt_min: Timestamp @fdc_generated(from: "ProviderAccess.accessGrantedAt", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `accessExpiresAt` field in the `ProviderAccess` table.
+  """
+  accessExpiresAt_max: Timestamp @fdc_generated(from: "ProviderAccess.accessExpiresAt", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `accessGrantedAt` field in the `ProviderAccess` table.
+  """
+  accessGrantedAt_max: Timestamp @fdc_generated(from: "ProviderAccess.accessGrantedAt", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "ProviderAccess.id", purpose: ENTITY_ID)
+}
+extend type User {
+  """
+  ✨ List `HealthGoal` objects in a one-to-many relationship (where `HealthGoal`.`user` is this object).
+  """
+  healthGoals_on_user(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: HealthGoal_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [HealthGoal_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: HealthGoal_Having
+  ): [HealthGoal!]! @fdc_generated(from: "HealthGoal.user", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `HealthMetricRecord` objects in a one-to-many relationship (where `HealthMetricRecord`.`user` is this object).
+  """
+  healthMetricRecords_on_user(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: HealthMetricRecord_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [HealthMetricRecord_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: HealthMetricRecord_Having
+  ): [HealthMetricRecord!]! @fdc_generated(from: "HealthMetricRecord.user", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `ProviderAccess` objects in a one-to-many relationship (where `ProviderAccess`.`user` is this object).
+  """
+  providerAccesses_on_user(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: ProviderAccess_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [ProviderAccess_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: ProviderAccess_Having
+  ): [ProviderAccess!]! @fdc_generated(from: "ProviderAccess.user", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "User", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `User` table.
+  """
+  _count: Int! @fdc_generated(from: "User.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.createdAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `dateOfBirth` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  dateOfBirth_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.dateOfBirth", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `displayName` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  displayName_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.displayName", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `email` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  email_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.email", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `gender` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  gender_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.gender", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `height` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  height_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.height", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `photoUrl` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  photoUrl_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.photoUrl", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `weight` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  weight_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.weight", purpose: QUERY_COUNT)
+  """
+  ✨ Sum the `height` field in the `User` table.
+  """
+  height_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "User.height", purpose: QUERY_SUM)
+  """
+  ✨ Sum the `weight` field in the `User` table.
+  """
+  weight_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "User.weight", purpose: QUERY_SUM)
+  """
+  ✨ Average the `height` field in the `User` table.
+  """
+  height_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "User.height", purpose: QUERY_AVG)
+  """
+  ✨ Average the `weight` field in the `User` table.
+  """
+  weight_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "User.weight", purpose: QUERY_AVG)
+  """
+  ✨ Minimum of the `createdAt` field in the `User` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "User.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `dateOfBirth` field in the `User` table.
+  """
+  dateOfBirth_min: Date @fdc_generated(from: "User.dateOfBirth", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `height` field in the `User` table.
+  """
+  height_min: Float @fdc_generated(from: "User.height", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `weight` field in the `User` table.
+  """
+  weight_min: Float @fdc_generated(from: "User.weight", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `User` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "User.createdAt", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `dateOfBirth` field in the `User` table.
+  """
+  dateOfBirth_max: Date @fdc_generated(from: "User.dateOfBirth", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `height` field in the `User` table.
+  """
+  height_max: Float @fdc_generated(from: "User.height", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `weight` field in the `User` table.
+  """
+  weight_max: Float @fdc_generated(from: "User.weight", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "User.id", purpose: ENTITY_ID)
+}

@@ -1,0 +1,46 @@
+query AllHealthMetricTypes @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public as it only returns generic health metric information.") {
+  healthMetricTypes {
+    id
+    name
+    unit
+    description
+  }
+}
+
+query MyHealthGoals @auth(level: USER) {
+  healthGoals(where: {user: {id_expr: "auth.uid"}}) {
+    id
+    metricType {
+      name
+      unit
+    }
+    targetValue
+    startDate
+    endDate
+    status
+    lowerBound
+    upperBound
+    description
+  }
+}
+
+mutation InsertHealthMetricRecord($metricTypeId: UUID!, $value: Float!, $recordedAt: Timestamp!, $notes: String) @auth(level: USER) {
+  healthMetricRecord_insert(data: {
+    userId_expr: "auth.uid",
+    metricTypeId: $metricTypeId,
+    value: $value,
+    recordedAt: $recordedAt,
+    notes: $notes
+  }) {
+    id
+  }
+}
+
+mutation UpdateMyDisplayName($newDisplayName: String!) @auth(level: USER) {
+  user_update(
+    key: {id_expr: "auth.uid"},
+    data: {displayName: $newDisplayName}
+  ) {
+    id
+  }
+}

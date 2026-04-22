@@ -1,0 +1,90 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function hasRole(role) {
+      return isSignedIn()
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == role;
+    }
+
+    function isAdmin() {
+      return hasRole('ADMIN');
+    }
+
+    function isCareTeam() {
+      return isSignedIn()
+        && (
+          hasRole('ADMIN')
+          || hasRole('CLINICIAN')
+          || hasRole('CLINIC_MANAGER')
+        );
+    }
+
+    match /users/{userId} {
+      allow read, create, update: if isOwner(userId);
+      allow delete: if false;
+    }
+
+    match /doctors/{userId} {
+      allow read, create, update: if isOwner(userId);
+      allow delete: if false;
+    }
+
+    match /audit_logs/{logId} {
+      allow create: if isSignedIn();
+      allow read: if isAdmin();
+      allow update, delete: if false;
+    }
+
+    match /patients/{patientId} {
+      allow create, read, update: if isCareTeam();
+      allow delete: if isAdmin();
+
+      match /vitals/{vitalId} {
+        allow create, read: if isCareTeam();
+        allow update, delete: if false;
+      }
+
+      match /anomalies/{anomalyId} {
+        allow create, read: if isCareTeam();
+        allow update: if isCareTeam();
+        allow delete: if false;
+      }
+    }
+
+    match /system_errors/{logId} {
+      allow create: if isSignedIn();
+      allow read: if isAdmin();
+      allow update, delete: if false;
+    }
+
+    match /medical_records/{recordId} {
+      allow read: if isCareTeam() || isOwner(resource.data.patientId);
+      allow create, update: if isCareTeam();
+      allow delete: if isAdmin();
+    }
+
+    match /rag_query_logs/{logId} {
+      allow create: if isSignedIn();
+      allow read: if isAdmin();
+      allow update, delete: if false;
+    }
+
+    match /hospitals/{hospitalId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

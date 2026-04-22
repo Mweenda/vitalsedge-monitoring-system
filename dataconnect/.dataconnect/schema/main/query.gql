@@ -1,0 +1,267 @@
+extend type Query {
+  """
+  ✨ Look up a single `HealthGoal` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  healthGoal(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: HealthGoal_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: HealthGoal_FirstRow
+  ): HealthGoal @fdc_generated(from: "HealthGoal", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `HealthMetricRecord` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  healthMetricRecord(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: HealthMetricRecord_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: HealthMetricRecord_FirstRow
+  ): HealthMetricRecord @fdc_generated(from: "HealthMetricRecord", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `HealthMetricType` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  healthMetricType(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: HealthMetricType_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: HealthMetricType_FirstRow
+  ): HealthMetricType @fdc_generated(from: "HealthMetricType", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `ProviderAccess` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  providerAccess(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: ProviderAccess_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: ProviderAccess_FirstRow
+  ): ProviderAccess @fdc_generated(from: "ProviderAccess", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `User` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  user(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: User_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: User_FirstRow
+  ): User @fdc_generated(from: "User", purpose: QUERY_SINGLE)
+  """
+  ✨ List `HealthGoal` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  healthGoals(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: HealthGoal_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [HealthGoal_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: HealthGoal_Having
+  ): [HealthGoal!]! @fdc_generated(from: "HealthGoal", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `HealthMetricRecord` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  healthMetricRecords(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: HealthMetricRecord_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [HealthMetricRecord_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: HealthMetricRecord_Having
+  ): [HealthMetricRecord!]! @fdc_generated(from: "HealthMetricRecord", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `HealthMetricType` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  healthMetricTypes(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: HealthMetricType_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [HealthMetricType_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: HealthMetricType_Having
+  ): [HealthMetricType!]! @fdc_generated(from: "HealthMetricType", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `ProviderAccess` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  providerAccesses(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: ProviderAccess_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [ProviderAccess_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: ProviderAccess_Having
+  ): [ProviderAccess!]! @fdc_generated(from: "ProviderAccess", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `User` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  users(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: User_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [User_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: User_Having
+  ): [User!]! @fdc_generated(from: "User", purpose: QUERY_MULTIPLE)
+}
