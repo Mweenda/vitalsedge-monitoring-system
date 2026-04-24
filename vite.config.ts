@@ -22,7 +22,7 @@ export default defineConfig(({mode}) => {
           manualChunks: {
             'vendor-firebase': ['firebase/app', 'firebase/auth', 'firebase/firestore', 'firebase/storage'],
             'vendor-react': ['react', 'react-dom'],
-            'vendor-ui': ['framer-motion'],
+            'vendor-motion': ['motion/react'],
             'medical-rag': ['./src/utils/medicalRAG.ts', './src/components/MedicalRAGAssistant.tsx'],
           },
         },
