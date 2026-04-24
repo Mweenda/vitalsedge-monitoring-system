@@ -18,6 +18,7 @@ import DoctorOnboarding from "./pages/DoctorOnboarding";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { ThemeProvider } from "./components/ThemeContext";
 import { DegradedBanner } from "./components/system/DegradedBanner";
+import { PasswordResetHandler } from "./components/PasswordResetHandler";
 
 const LandingPageWrapper = () => {
   const navigate = useNavigate();
@@ -246,6 +247,13 @@ const AppContent = () => {
             ) : (
               <Navigate to="/login" />
             )
+          }
+        />
+
+        <Route
+          path="/resetPassword"
+          element={
+            <PasswordResetHandler />
           }
         />
 
