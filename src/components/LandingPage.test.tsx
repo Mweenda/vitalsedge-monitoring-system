@@ -4,39 +4,26 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import LandingPage from './LandingPage';
 import { FirebaseProvider } from './FirebaseProvider';
 
-// Mock IntersectionObserver
-class MockIntersectionObserver {
+vi.stubGlobal('IntersectionObserver', class {
   observe = vi.fn();
   unobserve = vi.fn();
   disconnect = vi.fn();
-}
-vi.stubGlobal('IntersectionObserver', MockIntersectionObserver);
-
-const firebaseBarrel = vi.hoisted(() => {
-  const auth = { currentUser: null as unknown };
-  const onAuthStateChanged = vi.fn((_auth: typeof auth, callback: (user: unknown) => void) => {
-    queueMicrotask(() => callback(null));
-    return () => {};
-  });
-  return { auth, onAuthStateChanged };
 });
 
 vi.mock('../firebase', () => ({
-  auth: firebaseBarrel.auth,
+  auth: { currentUser: null },
   db: {},
-  onAuthStateChanged: firebaseBarrel.onAuthStateChanged,
+  onAuthStateChanged: vi.fn((_auth: unknown, callback: (user: null) => void) => {
+    callback(null);
+    return () => {};
+  }),
   handleFirestoreError: vi.fn(),
-  OperationType: {
-    GET: 'GET',
-    LIST: 'LIST',
-    UPDATE: 'UPDATE',
-    DELETE: 'DELETE',
-  },
+  OperationType: { GET: 'GET', LIST: 'LIST', UPDATE: 'UPDATE', DELETE: 'DELETE' },
 }));
 
 vi.mock('firebase/auth', () => ({
-  onAuthStateChanged: firebaseBarrel.onAuthStateChanged,
-  signInWithPopup: vi.fn(),
+  onAuthStateChanged: vi.fn(),
+  signInWithPopup: vi.fn(() => Promise.resolve({ user: {} })),
   GoogleAuthProvider: vi.fn(),
 }));
 

@@ -4,34 +4,8 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import OnboardingFlow from '../../components/OnboardingFlow';
 import { FirebaseProvider } from '../../components/FirebaseProvider';
 
-const firebaseBarrel = vi.hoisted(() => {
-  const auth = {
-    currentUser: { uid: 'test-user', email: 'test@example.com' },
-  };
-  const onAuthStateChanged = vi.fn((_auth: typeof auth, callback: (user: unknown) => void) => {
-    queueMicrotask(() => callback(_auth.currentUser));
-    return () => {};
-  });
-  return { auth, onAuthStateChanged };
-});
-
 vi.mock('../../firebase', () => ({
-  auth: firebaseBarrel.auth,
-  db: {},
-  onAuthStateChanged: firebaseBarrel.onAuthStateChanged,
-}));
-
-vi.mock('firebase/auth', () => ({
-  onAuthStateChanged: firebaseBarrel.onAuthStateChanged,
-}));
-
-vi.mock('firebase/firestore', () => ({
-  doc: vi.fn(),
-  setDoc: vi.fn(),
-  collection: vi.fn(),
-  addDoc: vi.fn(),
-  serverTimestamp: vi.fn(() => new Date()),
-}));
+  auth: { currentUser: { uid: 'test-user', email: 'test@example.com' },
 
 describe('Patient Enrollment Integration Tests', () => {
   beforeEach(() => {

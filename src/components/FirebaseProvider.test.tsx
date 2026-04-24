@@ -5,37 +5,15 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../firebase';
 import { FirebaseProvider, useFirebase } from './FirebaseProvider';
 
-const firebaseBarrel = vi.hoisted(() => {
-  const auth = { currentUser: null as unknown };
-  const onAuthStateChanged = vi.fn((_auth: typeof auth, callback: (user: unknown) => void) => {
-    queueMicrotask(() => callback(_auth.currentUser));
-    return () => {};
-  });
-  return { auth, onAuthStateChanged };
-});
-
 vi.mock('../firebase', () => ({
-  auth: firebaseBarrel.auth,
+  auth: { currentUser: null },
   db: {},
-  onAuthStateChanged: firebaseBarrel.onAuthStateChanged,
-}));
-
-vi.mock('firebase/auth', () => ({
-  onAuthStateChanged: firebaseBarrel.onAuthStateChanged,
-  signOut: vi.fn(),
-}));
-
-vi.mock('firebase/firestore', () => ({
-  doc: vi.fn(),
-  getDoc: vi.fn(),
-  setDoc: vi.fn().mockResolvedValue(undefined),
-  updateDoc: vi.fn(),
-  collection: vi.fn(),
-  query: vi.fn(),
-  where: vi.fn(),
-  getDocs: vi.fn(),
-  addDoc: vi.fn(),
-  serverTimestamp: vi.fn(() => new Date()),
+  onAuthStateChanged: vi.fn((_auth: unknown, callback: (user: null) => void) => {
+    callback(null);
+    return () => {};
+  }),
+  handleFirestoreError: vi.fn(),
+  OperationType: { GET: 'GET', LIST: 'LIST', UPDATE: 'UPDATE', DELETE: 'DELETE' },
 }));
 
 describe('FirebaseProvider Component', () => {

@@ -4,36 +4,15 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { EdgeDevice } from './EdgeDevice';
 import { FirebaseProvider } from './FirebaseProvider';
 
-const firebaseBarrel = vi.hoisted(() => {
-  const auth = {
-    currentUser: { uid: 'test-user', email: 'test@example.com' },
-  };
-  const onAuthStateChanged = vi.fn((_auth: typeof auth, callback: (user: unknown) => void) => {
-    queueMicrotask(() => callback(_auth.currentUser));
-    return () => {};
-  });
-  return { auth, onAuthStateChanged };
-});
-
 vi.mock('../firebase', () => ({
-  auth: firebaseBarrel.auth,
+  auth: { currentUser: { uid: 'test-user', email: 'test@example.com' } },
   db: {},
-  onAuthStateChanged: firebaseBarrel.onAuthStateChanged,
-}));
-
-vi.mock('firebase/auth', () => ({
-  onAuthStateChanged: firebaseBarrel.onAuthStateChanged,
-}));
-
-vi.mock('firebase/firestore', () => ({
-  doc: vi.fn(),
-  getDoc: vi.fn().mockResolvedValue({ exists: () => false }),
-  setDoc: vi.fn().mockResolvedValue(undefined),
-  updateDoc: vi.fn(),
-  collection: vi.fn(),
-  addDoc: vi.fn(),
-  serverTimestamp: vi.fn(() => new Date()),
-  onSnapshot: vi.fn(),
+  onAuthStateChanged: vi.fn((_auth: unknown, callback: (user: unknown) => void) => {
+    callback({ uid: 'test-user', email: 'test@example.com' });
+    return () => {};
+  }),
+  handleFirestoreError: vi.fn(),
+  OperationType: { GET: 'GET', LIST: 'LIST', UPDATE: 'UPDATE', DELETE: 'DELETE' },
 }));
 
 vi.mock('../utils/vitalsValidation', () => ({
