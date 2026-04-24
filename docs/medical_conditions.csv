@@ -1,0 +1,16 @@
+Dataset_Name,Category,Description,Primary_Format,Access_URL,License_Type
+Congestive Heart Failure,Cardiovascular,CHF classification NYHA I-IV: symptoms, ejection fraction thresholds, treatment algorithms, monitoring requirements,PDF,https://www.acc.org/heart-failure-guidelines,Open Access
+Atrial Fibrillation,Cardiovascular,AFib management: CHA2DS2-VASc score, anticoagulation decisions, rate vs rhythm control, ablation criteria,PDF,https://www.acc.org/afib-guidelines,Open Access
+Hypertension,Cardiovascular,Primary hypertension: diagnosis criteria, lifestyle modifications, medication classes (ACEi, ARB, CCB, diuretics),PDF,https://www.nhlbi.nih.gov/health-topics/high-blood-pressure,Public Domain
+Diabetes Type 2,Endocrinology,Type 2 diabetes: diagnosis (HbA1c ≥6.5%, FPG ≥126, OGTT ≥200), treatment algorithm, cardiovascular risk reduction,CSV,https://diabetes.org/about-diabetes,Public Domain
+COPD Exacerbation,Pulmonology,Acute COPD exacerbation: triggers, severity assessment, GOLD criteria, antibiotic indications, hospitalization decision,PDF,https://goldcopd.org/acute-exacerbation/,Open Access
+Pneumonia,Infectious Disease,Pneumonia classification: community-acquired vs hospital-acquired, severity scores (CURB-65, PSI), antibiotic selection,CSV,https://www.idsociety.org/pneumonia/,Open Access
+Sepsis Recognition,Infectious Disease,Early sepsis recognition: SIRS criteria evolution to SOFA, qSOFA screening, lactate interpretation,PDF,https://www.sccm.org/SurvivingSepsisCampaign/Guidelines,Open Access
+Pulmonary Embolism,Cardiovascular,PE diagnosis and management: Wells score, D-dimer interpretation, CTPA indication, anticoagulation initiation,PDF,https://www.acr.org/quality-safety/guidelines,Open Access
+Acute Kidney Injury,Nephrology,AKI staging: KDIGO criteria (creatinine rise, urine output), contrast-induced prevention, nephrotoxic drug review,PDF,https://kdigo.org/guidelines/aci,Open Access
+Stroke Types,Neurology,Ischemic vs hemorrhagic stroke differentiation: clinical presentation, imaging criteria, thrombolysis windows,PDF,https://www.stroke.org/en/professionals/stroke-resource-library,Public Domain
+Asthma Exacerbation,Allergy and Immunology,Acute asthma attack: severity assessment, peak flow interpretation, bronchodilator protocol, escalation criteria,CSV,https://www.ginasthma.com/,Open Access
+Myocardial Infarction,Cardiovascular,STEMI/NSTEMI differentiation: troponin patterns, ECG criteria, door-to-balloon time targets,PDF,https://www.acc.org/acs-guidelines,Open Access
+Heart Rate Variability,Cardiology,HRV analysis: time-domain (SDNN, RMSSD) and frequency-domain metrics, clinical interpretation for autonomic function,CSV,https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5624990/,Open Access
+Arrhythmia Types,Cardiovascular,Common arrhythmias: SVT, VT, VF, heart block grades, ECG characteristics, treatment approaches,PDF,https://www.heart.org/health-topics/arrhythmia,Public Domain
+Respiratory Distress,Critical Care,Respiratory distress indicators: accessory muscle use, respiratory rate extremes, oxygen requirements, work of breathing,CSV,https://www.atsjournals.org/doi/10.1164/rccm.201208-1530ED,Open Access

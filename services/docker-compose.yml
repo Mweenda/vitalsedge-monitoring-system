@@ -1,0 +1,247 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: vitalsedge-postgres
+    environment:
+      POSTGRES_DB: vitalsedge
+      POSTGRES_USER: vitalsedge_user
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-SecurePostgresPass123!}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./services/auth-service/database/init.sql:/docker-entrypoint-initdb.d/01-init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vitalsedge_user -d vitalsedge"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - vitalsedge-network
+    restart: unless-stopped
+
+  mongodb:
+    image: mongo:6-alpine
+    container_name: vitalsedge-mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: vitalsedge_user
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD:-SecureMongoPass123!}
+      MONGO_INITDB_DATABASE: vitalsedge_iot
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongo", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - vitalsedge-network
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: vitalsedge-redis
+    command: redis-server --requirepass ${REDIS_PASSWORD:-SecureRedisPass123!} --appendonly yes
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD:-SecureRedisPass123!}", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - vitalsedge-network
+    restart: unless-stopped
+
+  rabbitmq:
+    image: rabbitmq:3.12-management-alpine
+    container_name: vitalsedge-rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: vitalsedge_user
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:-SecureRabbitPass123!}
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - vitalsedge-network
+    restart: unless-stopped
+
+  auth-service:
+    build:
+      context: ./services/auth-service
+      dockerfile: Dockerfile
+    container_name: vitalsedge-auth
+    environment:
+      NODE_ENV: development
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: vitalsedge
+      DB_USER: vitalsedge_user
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-SecurePostgresPass123!}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-SecureRedisPass123!}
+      JWT_SECRET: ${JWT_SECRET:-your-super-secure-jwt-secret-key-here-min-32-chars!}
+      JWT_EXPIRY: 3600
+      PORT: 3001
+    ports:
+      - "3001:3001"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - vitalsedge-network
+    restart: unless-stopped
+
+  patient-service:
+    build:
+      context: ./services/patient-service
+      dockerfile: Dockerfile
+    container_name: vitalsedge-patient
+    environment:
+      NODE_ENV: development
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: vitalsedge
+      DB_USER: vitalsedge_user
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-SecurePostgresPass123!}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-SecureRedisPass123!}
+      PORT: 3002
+    ports:
+      - "3002:3002"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - vitalsedge-network
+    restart: unless-stopped
+
+  device-service:
+    build:
+      context: ./services/device-service
+      dockerfile: Dockerfile
+    container_name: vitalsedge-device
+    environment:
+      NODE_ENV: development
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: vitalsedge
+      DB_USER: vitalsedge_user
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-SecurePostgresPass123!}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-SecureRedisPass123!}
+      RABBITMQ_URL: amqp://vitalsedge_user:${RABBITMQ_PASSWORD:-SecureRabbitPass123!}@rabbitmq:5672
+      PORT: 3003
+    ports:
+      - "3003:3003"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - vitalsedge-network
+    restart: unless-stopped
+
+  iot-service:
+    build:
+      context: ./services/iot-service
+      dockerfile: Dockerfile
+    container_name: vitalsedge-iot
+    environment:
+      NODE_ENV: development
+      MONGODB_URL: mongodb://vitalsedge_user:${MONGO_PASSWORD:-SecureMongoPass123!}@mongodb:27017/vitalsedge_iot?authSource=admin
+      MONGODB_DATABASE: vitalsedge_iot
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-SecureRedisPass123!}
+      RABBITMQ_URL: amqp://vitalsedge_user:${RABBITMQ_PASSWORD:-SecureRabbitPass123!}@rabbitmq:5672
+      PORT: 3004
+    ports:
+      - "3004:3004"
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - vitalsedge-network
+    restart: unless-stopped
+
+  doctor-service:
+    build:
+      context: ./services/doctor-service
+      dockerfile: Dockerfile
+    container_name: vitalsedge-doctor
+    environment:
+      NODE_ENV: development
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: vitalsedge
+      DB_USER: vitalsedge_user
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-SecurePostgresPass123!}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-SecureRedisPass123!}
+      JWT_SECRET: ${JWT_SECRET:-your-super-secure-jwt-secret-key-here-min-32-chars!}
+      PORT: 3005
+    ports:
+      - "3005:3005"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - vitalsedge-network
+    restart: unless-stopped
+
+  api-gateway:
+    build:
+      context: ./services/api-gateway
+      dockerfile: Dockerfile
+    container_name: vitalsedge-gateway
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - auth-service
+      - patient-service
+      - device-service
+      - iot-service
+      - doctor-service
+    networks:
+      - vitalsedge-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  mongodb_data:
+  redis_data:
+  rabbitmq_data:
+
+networks:
+  vitalsedge-network:
+    driver: bridge

@@ -1,0 +1,90 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vitalsedge-ingress
+  namespace: vitalsedge
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/rate-limit: "100"
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    acme.cert-manager.io/http01-editable: "true"
+spec:
+  tls:
+  - hosts:
+    - vitalsedge-monitoring-system.com
+    - api.vitalsedge-monitoring-system.com
+    secretName: vitalsedge-tls-cert
+  rules:
+  - host: vitalsedge-monitoring-system.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: vitalsedge-frontend-service
+            port:
+              number: 80
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: vitalsedge-backend-service
+            port:
+              number: 3001
+      - path: /medical-rag
+        pathType: Prefix
+        backend:
+          service:
+            name: vitalsedge-backend-service
+            port:
+              number: 3001
+  - host: api.vitalsedge-monitoring-system.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: vitalsedge-backend-service
+            port:
+              number: 3001
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: vitalsedge-network-policy
+  namespace: vitalsedge
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: ingress-nginx
+    ports:
+    - protocol: TCP
+      port: 80
+    - protocol: TCP
+      port: 443
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          app: vitalsedge-backend
+    ports:
+    - protocol: TCP
+      port: 3001
+  - to:
+    - namespaceSelector: {}
+    ports:
+    - protocol: TCP
+      port: 53
+    - protocol: UDP
+      port: 53

@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: vitalsedge
+  labels:
+    name: vitalsedge
+    monitoring: enabled
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vitalsedge-config
+  namespace: vitalsedge
+data:
+  LOG_LEVEL: "info"
+  NODE_ENV: "production"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: vitalsedge-secrets
+  namespace: vitalsedge
+type: Opaque
+stringData:
+  db_password: "SecurePostgresPass123!"
+  redis_password: "SecureRedisPass123!"
+  mongo_password: "SecureMongoPass123!"
+  rabbitmq_password: "SecureRabbitPass123!"
+  jwt_secret: "your-super-secure-jwt-secret-key-here-min-32-chars!"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: vitalsedge-sa
+  namespace: vitalsedge
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pvc
+  namespace: vitalsedge
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+  storageClassName: standard
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongodb-pvc
+  namespace: vitalsedge
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: standard

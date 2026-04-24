@@ -1,0 +1,106 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vitalsedge-frontend
+  namespace: vitalsedge
+  labels:
+    app: vitalsedge-frontend
+    version: v1
+spec:
+  replicas: 3
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app: vitalsedge-frontend
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: vitalsedge-frontend
+        version: v1
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "80"
+    spec:
+      containers:
+      - name: frontend
+        image: gcr.io/vitalsedge-monitoring-system/frontend:latest
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 80
+          protocol: TCP
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: VITE_API_URL
+          value: "https://api.vitalsedge-monitoring-system.com"
+        envFrom:
+        - configMapRef:
+            name: vitalsedge-config
+        - secretRef:
+            name: vitalsedge-secrets
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+        livenessProbe:
+          httpGet:
+            path: /
+            port: http
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /
+            port: http
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vitalsedge-frontend-service
+  namespace: vitalsedge
+  labels:
+    app: vitalsedge-frontend
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 80
+    targetPort: http
+    protocol: TCP
+  selector:
+    app: vitalsedge-frontend
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: vitalsedge-frontend-hpa
+  namespace: vitalsedge
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: vitalsedge-frontend
+  minReplicas: 3
+  maxReplicas: 15
+  targetCPUUtilizationPercentage: 70

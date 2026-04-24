@@ -1,0 +1,112 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vitalsedge-corpus-generator
+  namespace: vitalsedge
+  labels:
+    app: vitalsedge-corpus-generator
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vitalsedge-corpus-generator
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: vitalsedge-corpus-generator
+        version: v1
+    spec:
+      containers:
+      - name: corpus-generator
+        image: gcr.io/vitalsedge-monitoring-system/corpora-generator:latest
+        imagePullPolicy: Always
+        env:
+        - name: OUTPUT_DIR
+          value: "/app/docs"
+        - name: GCS_BUCKET_NAME
+          value: "medical-corpus"
+        envFrom:
+        - secretRef:
+            name: vitalsedge-secrets
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+        volumeMounts:
+        - name: corpus-data
+          mountPath: /app/docs
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+      volumes:
+      - name: corpus-data
+        persistentVolumeClaim:
+          claimName: vitalsedge-corpus-pvc
+      restartPolicy: OnFailure
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: vitalsedge-corpus-pvc
+  namespace: vitalsedge
+  labels:
+    app: vitalsedge-corpus-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: standard
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: CronJob
+metadata:
+  name: vitalsedge-corpus-scheduler
+  namespace: vitalsedge
+  labels:
+    app: vitalsedge-corpus-scheduler
+spec:
+  schedule: "0 2 * * 0"
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: corpus-generator
+            image: gcr.io/vitalsedge-monitoring-system/corpora-generator:latest
+            imagePullPolicy: Always
+            env:
+            - name: OUTPUT_DIR
+              value: "/app/docs"
+            - name: GCS_BUCKET_NAME
+              value: "medical-corpus"
+            envFrom:
+            - secretRef:
+                name: vitalsedge-secrets
+            volumeMounts:
+            - name: corpus-data
+              mountPath: /app/docs
+            resources:
+              requests:
+                cpu: 100m
+                memory: 256Mi
+              limits:
+                cpu: 500m
+                memory: 512Mi
+          volumes:
+          - name: corpus-data
+            persistentVolumeClaim:
+              claimName: vitalsedge-corpus-pvc
+          restartPolicy: OnFailure

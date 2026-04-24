@@ -1,0 +1,125 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vitalsedge-ingress
+  namespace: vitalsedge
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/rate-limit: "100"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - vitalsedge.example.com
+    - api.vitalsedge.example.com
+    secretName: vitalsedge-tls
+  rules:
+  - host: vitalsedge.example.com
+    http:
+      paths:
+      - path: /auth
+        pathType: Prefix
+        backend:
+          service:
+            name: auth-service
+            port:
+              number: 80
+      - path: /api/v1/auth
+        pathType: Prefix
+        backend:
+          service:
+            name: auth-service
+            port:
+              number: 80
+      - path: /api/v1/patients
+        pathType: Prefix
+        backend:
+          service:
+            name: patient-service
+            port:
+              number: 80
+      - path: /api/v1/devices
+        pathType: Prefix
+        backend:
+          service:
+            name: device-service
+            port:
+              number: 80
+      - path: /api/v1/iot
+        pathType: Prefix
+        backend:
+          service:
+            name: iot-service
+            port:
+              number: 80
+      - path: /api/v1/doctor
+        pathType: Prefix
+        backend:
+          service:
+            name: doctor-service
+            port:
+              number: 80
+  - host: api.vitalsedge.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: auth-service
+            port:
+              number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: vitalsedge-network-policy
+  namespace: vitalsedge
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: vitalsedge
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          app: postgres
+    ports:
+    - protocol: TCP
+      port: 5432
+  - to:
+    - podSelector:
+        matchLabels:
+          app: mongodb
+    ports:
+    - protocol: TCP
+      port: 27017
+  - to:
+    - podSelector:
+        matchLabels:
+          app: redis
+    ports:
+    - protocol: TCP
+      port: 6379
+  - to:
+    - podSelector:
+        matchLabels:
+          app: rabbitmq
+    ports:
+    - protocol: TCP
+      port: 5672
+  - to:
+    - namespaceSelector: {}
+    ports:
+    - protocol: TCP
+      port: 53
+    - protocol: UDP
+      port: 53

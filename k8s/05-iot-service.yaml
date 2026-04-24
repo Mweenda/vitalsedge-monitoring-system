@@ -1,0 +1,118 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iot-service
+  namespace: vitalsedge
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: iot-service
+  template:
+    metadata:
+      labels:
+        app: iot-service
+        tier: services
+    spec:
+      containers:
+      - name: iot-service
+        image: gcr.io/vitalsedge-monitoring-system/iot-service:latest
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 3004
+        env:
+        - name: NODE_ENV
+          value: production
+        - name: PORT
+          value: "3004"
+        - name: MONGODB_URL
+          value: mongodb://vitalsedge_user:$(MONGO_PASSWORD)@mongodb:27017/vitalsedge_iot?authSource=admin
+        - name: MONGO_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: vitalsedge-secrets
+              key: mongo_password
+        - name: MONGODB_DATABASE
+          value: vitalsedge_iot
+        - name: REDIS_HOST
+          value: redis
+        - name: REDIS_PORT
+          value: "6379"
+        - name: REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: vitalsedge-secrets
+              key: redis_password
+        - name: RABBITMQ_URL
+          value: amqp://vitalsedge_user:$(RABBITMQ_PASSWORD)@rabbitmq:5672
+        - name: RABBITMQ_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: vitalsedge-secrets
+              key: rabbitmq_password
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "200m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: http
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: http
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 1001
+          readOnlyRootFilesystem: true
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: iot-service
+  namespace: vitalsedge
+spec:
+  selector:
+    app: iot-service
+  ports:
+  - name: http
+    port: 80
+    targetPort: 3004
+  type: ClusterIP
+
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: iot-service-hpa
+  namespace: vitalsedge
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: iot-service
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80
