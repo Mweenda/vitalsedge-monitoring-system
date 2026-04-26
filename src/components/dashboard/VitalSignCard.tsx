@@ -18,19 +18,24 @@ export const VitalSignCard: React.FC<VitalSignCardProps> = ({
 }) => (
   <div
     className={clsx(
-      "flex flex-col gap-2 rounded-2xl border bg-white p-5 shadow-lg hover:shadow-xl transition-shadow duration-300",
-      status === "normal" && "border-neutral-200",
-      status === "alert" && "border-red-200 ring-1 ring-red-100",
-      status === "warning" && "border-amber-200 ring-1 ring-amber-100",
+      "flex flex-col items-center rounded-xl border bg-white p-6 shadow-sm hover:shadow-md transition-shadow",
+      status === "normal" && "border-gray-200",
+      status === "alert" && "border-red-200 bg-red-50",
+      status === "warning" && "border-amber-200 bg-amber-50",
     )}
   >
-    <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wide text-neutral-500">
-      <span>{label}</span>
-      <span className="text-neutral-400">{icon}</span>
+    <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-3 bg-gray-50">
+      {icon}
     </div>
-    <div className="font-mono text-2xl tabular-nums text-neutral-900">
-      {value}{" "}
-      <span className="text-sm font-normal text-neutral-500">{unit}</span>
+    <div className="text-sm text-gray-500 mb-1.5 text-center">{label}</div>
+    <div className={clsx(
+      "text-3xl font-bold",
+      status === "normal" && "text-gray-800",
+      status === "alert" && "text-red-600",
+      status === "warning" && "text-amber-600",
+    )}>
+      {value}
+      <span className="text-lg font-normal text-gray-500 ml-1">{unit}</span>
     </div>
   </div>
 );

@@ -15,8 +15,8 @@ describe('ThemeCard', () => {
   it('applies dashboard variant surface classes', () => {
     const { container } = render(<ThemeCard variant="dashboard">A</ThemeCard>);
     const el = container.querySelector('[data-testid="theme-card"]');
-    expect(el?.className).toMatch(/rounded-2xl/);
-    expect(el?.className).toMatch(/border-neutral-200/);
+    expect(el?.className).toMatch(/rounded-xl/);
+    expect(el?.className).toMatch(/border-gray-200/);
   });
 
   it('applies hero variant for dark home shell', () => {

@@ -11,18 +11,18 @@ export const LoadingState: React.FC<LoadingStateProps> = ({
   submessage,
 }) => (
   <div
-    className="flex min-h-[240px] flex-col items-center justify-center gap-3 rounded-lg border border-neutral-200 bg-white dark:bg-neutral-900 dark:border-neutral-800 p-8 shadow-sm"
+    className="flex min-h-[240px] flex-col items-center justify-center gap-3 rounded-xl border border-white/10 bg-slate-900/60 p-8 shadow-lg"
     role="status"
     aria-live="polite"
     aria-busy="true"
   >
     <Loader2
-      className="h-10 w-10 animate-spin text-blue-600 dark:text-blue-400"
+      className="h-10 w-10 animate-spin text-emerald-400"
       aria-hidden
     />
-    <p className="text-sm font-medium text-neutral-800 dark:text-neutral-200">{message}</p>
+    <p className="text-sm font-medium text-white">{message}</p>
     {submessage && (
-      <p className="max-w-sm text-center text-xs text-neutral-500 dark:text-neutral-400">
+      <p className="max-w-sm text-center text-xs text-slate-400">
         {submessage}
       </p>
     )}

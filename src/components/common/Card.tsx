@@ -21,7 +21,7 @@ export const Card: React.FC<CardProps> = ({
 }) => (
   <div
     className={clsx(
-      "rounded-2xl border border-white/40 bg-white/70 shadow-sm backdrop-blur-md dark:border-white/10 dark:bg-neutral-900/60",
+      "rounded-xl border border-white/10 bg-slate-900/60 shadow-lg",
       paddingMap[padding],
       className,
     )}
@@ -38,14 +38,14 @@ export const CardHeader: React.FC<{
 }> = ({ title, subtitle, action, className }) => (
   <div
     className={clsx(
-      "mb-4 flex flex-wrap items-start justify-between gap-3 border-b border-white/20 dark:border-white/5 pb-4",
+      "mb-4 flex flex-wrap items-start justify-between gap-3 border-b border-white/10 pb-4",
       className,
     )}
   >
     <div>
-      <h3 className="text-base font-bold tracking-tight text-neutral-900 dark:text-white">{title}</h3>
+      <h3 className="text-base font-bold text-white">{title}</h3>
       {subtitle && (
-        <p className="mt-0.5 text-sm font-medium text-neutral-600 dark:text-neutral-400">{subtitle}</p>
+        <p className="mt-0.5 text-sm font-medium text-slate-400">{subtitle}</p>
       )}
     </div>
     {action}

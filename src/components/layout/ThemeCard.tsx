@@ -17,7 +17,7 @@ const paddingMap = {
 };
 
 /**
- * Authenticated-area card (docs): rounded-2xl, neutral border, light/dark.
+ * Authenticated-area card (docs): rounded-xl, gray border, light theme.
  * `hero` matches the HomePage gradient shell (translucent on dark).
  */
 export const ThemeCard: React.FC<ThemeCardProps> = ({
@@ -29,12 +29,12 @@ export const ThemeCard: React.FC<ThemeCardProps> = ({
   <div
     data-testid="theme-card"
     className={clsx(
-      'rounded-2xl border shadow-sm',
+      'rounded-xl border shadow-sm',
       paddingMap[padding],
       variant === 'dashboard' &&
-        'border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900',
+        'border-gray-200 bg-white',
       variant === 'hero' &&
-        'border-blue-500/20 bg-slate-800/50 backdrop-blur dark:border-blue-500/25',
+        'border-cyan-500/20 bg-slate-800/50 backdrop-blur',
       className,
     )}
   >

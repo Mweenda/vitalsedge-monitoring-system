@@ -42,9 +42,9 @@ export const AuthenticatedLayout: React.FC<AuthenticatedLayoutProps> = ({
     return () => main.removeEventListener("scroll", handleScroll);
   }, []);
 
-  return (
+return (
   <div
-    className="min-h-screen bg-neutral-50 font-sans text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100"
+    className="min-h-screen bg-gray-50 font-sans text-gray-900"
     data-testid="clinician-dashboard"
   >
     <TopNav
@@ -69,7 +69,7 @@ export const AuthenticatedLayout: React.FC<AuthenticatedLayoutProps> = ({
 
     <div className="flex pt-16">
       <aside
-        className="fixed bottom-0 left-0 top-16 z-20 hidden w-80 flex-col overflow-hidden border-r border-neutral-200 bg-white shadow-sm dark:border-neutral-800 dark:bg-neutral-900 lg:flex"
+        className="fixed bottom-0 left-0 top-16 z-20 hidden w-80 flex-col overflow-hidden border-r border-gray-200 bg-white shadow-sm lg:flex"
         aria-label="Main navigation"
       >
         <div className="flex min-h-0 flex-1 flex-col">{sidebar}</div>
@@ -81,7 +81,7 @@ export const AuthenticatedLayout: React.FC<AuthenticatedLayoutProps> = ({
       >
         {/* Scroll gradient indicator */}
         {hasScroll && (
-          <div className="fixed top-16 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 via-green-400 to-purple-400 opacity-50 z-30 pointer-events-none" />
+          <div className="fixed top-16 left-0 right-0 h-1 bg-gradient-to-r from-cyan-400 via-green-400 to-cyan-400 opacity-50 z-30 pointer-events-none" />
         )}
         <div className="mx-auto w-full max-w-[1400px]">
           {children}
@@ -89,5 +89,5 @@ export const AuthenticatedLayout: React.FC<AuthenticatedLayoutProps> = ({
       </main>
     </div>
   </div>
-  );
+);
 };

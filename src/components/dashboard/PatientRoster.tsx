@@ -54,17 +54,17 @@ const mockPatients: Patient[] = [
 const statusConfig = {
   active: {
     label: 'Active',
-    color: 'bg-green-100 text-green-800',
-    dotColor: 'bg-green-500'
+    color: 'bg-emerald-100 text-emerald-700',
+    dotColor: 'bg-emerald-500'
   },
   inactive: {
     label: 'Inactive',
-    color: 'bg-gray-100 text-gray-800',
+    color: 'bg-gray-100 text-gray-700',
     dotColor: 'bg-gray-500'
   },
   critical: {
     label: 'Critical',
-    color: 'bg-red-100 text-red-800',
+    color: 'bg-red-100 text-red-700',
     dotColor: 'bg-red-500'
   }
 };
@@ -72,13 +72,13 @@ const statusConfig = {
 const riskConfig = {
   low: {
     label: 'Low Risk',
-    color: 'text-green-600',
-    bgColor: 'bg-green-50'
+    color: 'text-emerald-600',
+    bgColor: 'bg-emerald-50'
   },
   medium: {
     label: 'Medium Risk',
-    color: 'text-yellow-600',
-    bgColor: 'bg-yellow-50'
+    color: 'text-amber-600',
+    bgColor: 'bg-amber-50'
   },
   high: {
     label: 'High Risk',
@@ -134,13 +134,13 @@ export const PatientRoster: React.FC = () => {
             placeholder="Search patients..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500"
           />
         </div>
         <select
           value={filterStatus}
           onChange={(e) => setFilterStatus(e.target.value)}
-          className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500"
         >
           <option value="all">All Status</option>
           <option value="active">Active</option>
@@ -151,8 +151,8 @@ export const PatientRoster: React.FC = () => {
 
       {/* Bulk Actions */}
       {selectedPatients.length > 0 && (
-        <div className="flex items-center gap-4 mb-4 p-4 bg-blue-50 rounded-lg">
-          <span className="text-sm text-blue-800">
+        <div className="flex items-center gap-4 mb-4 p-4 bg-cyan-50 rounded-lg">
+          <span className="text-sm text-cyan-800">
             {selectedPatients.length} patient{selectedPatients.length > 1 ? 's' : ''} selected
           </span>
           <Button variant="primary" size="sm">
@@ -192,7 +192,7 @@ export const PatientRoster: React.FC = () => {
               key={patient.id}
               className={clsx(
                 'flex items-center gap-4 p-4 border border-gray-200 hover:bg-gray-50 transition-colors',
-                isSelected && 'bg-blue-50 border-blue-200'
+                isSelected && 'bg-cyan-50 border-cyan-200'
               )}
             >
               <input

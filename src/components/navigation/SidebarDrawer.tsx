@@ -20,7 +20,6 @@ interface SidebarDrawerProps {
  * - Backdrop overlay that closes drawer when clicked
  * - Close button in top-right
  * - Full-height drawer with scrollable content
- * - Dark mode support
  */
 export const SidebarDrawer: React.FC<SidebarDrawerProps> = ({ isOpen, onClose, children }) => {
   return (
@@ -48,17 +47,17 @@ export const SidebarDrawer: React.FC<SidebarDrawerProps> = ({ isOpen, onClose, c
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className={clsx(
               'fixed left-0 top-0 z-50 h-full w-80 flex flex-col',
-              'border-r border-neutral-200 dark:border-neutral-800',
-              'bg-white dark:bg-neutral-900 shadow-lg'
+              'border-r border-gray-200',
+              'bg-white shadow-lg'
             )}
           >
             {/* Close button */}
-            <div className="flex items-center justify-between border-b border-neutral-200 dark:border-neutral-800 p-4">
-              <span className="text-sm font-semibold text-neutral-600 dark:text-neutral-400">Menu</span>
+            <div className="flex items-center justify-between border-b border-gray-200 p-4">
+              <span className="text-sm font-semibold text-gray-600">Menu</span>
               <button
                 type="button"
                 onClick={onClose}
-                className="rounded-lg p-2 text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+                className="rounded-lg p-2 text-gray-400 hover:bg-gray-100 transition-colors"
                 aria-label="Close menu"
               >
                 <X className="h-5 w-5" />

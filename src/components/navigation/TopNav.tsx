@@ -23,7 +23,7 @@ export const TopNav: React.FC<TopNavProps> = ({
   onToggleSidebar,
   isSidebarOpen,
 }) => (
-  <header className="fixed left-0 right-0 top-0 z-40 flex h-16 items-center justify-between border-b border-neutral-200 bg-white px-4 shadow-sm dark:border-neutral-800 dark:bg-neutral-900 sm:px-6">
+  <header className="fixed left-0 right-0 top-0 z-40 flex h-16 items-center justify-between border-b border-gray-200 bg-white px-4 shadow-sm sm:px-6">
     <div className="flex min-w-0 flex-1 items-center gap-4">
       {/* Hamburger menu button */}
       {onToggleSidebar && (
@@ -33,8 +33,8 @@ export const TopNav: React.FC<TopNavProps> = ({
           className={clsx(
             "rounded-lg p-2 transition-colors lg:hidden",
             isSidebarOpen
-              ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300'
-              : 'text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800'
+              ? 'bg-cyan-100 text-cyan-700'
+              : 'text-gray-600 hover:bg-gray-100'
           )}
           aria-label={isSidebarOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={isSidebarOpen}
@@ -44,17 +44,17 @@ export const TopNav: React.FC<TopNavProps> = ({
       )}
 
       <div
-        className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-600 shadow-sm sm:flex"
+        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-red-500 shadow-md"
         aria-hidden
       >
-        <Activity className="h-6 w-6 text-white" />
+        <Activity className="h-5 w-5 text-white" />
       </div>
       <div className="min-w-0">
-        <h1 className="truncate text-lg font-semibold leading-tight text-neutral-900 dark:text-white sm:text-xl">
-          {title}
+        <h1 className="truncate text-lg font-bold leading-tight text-gray-800 sm:text-xl">
+          VitalsEdge
         </h1>
         {subtitle && (
-          <p className="truncate text-sm text-neutral-600 dark:text-neutral-400">{subtitle}</p>
+          <p className="truncate text-sm text-gray-600">{subtitle}</p>
         )}
       </div>
 
@@ -66,8 +66,8 @@ export const TopNav: React.FC<TopNavProps> = ({
             className={clsx(
               "flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
               activeTab === 'home'
-                ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300'
-                : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800'
+                ? 'bg-cyan-50 text-cyan-600'
+                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
             )}
           >
             <Home className="h-4 w-4" />
@@ -80,8 +80,8 @@ export const TopNav: React.FC<TopNavProps> = ({
             className={clsx(
               "flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
               activeTab === 'overview'
-                ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300'
-                : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800'
+                ? 'bg-cyan-50 text-cyan-600'
+                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
             )}
           >
             <LayoutDashboard className="h-4 w-4" />
